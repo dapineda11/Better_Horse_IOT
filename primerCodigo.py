@@ -2,7 +2,10 @@
 #librerias prueba sebastian
 #Pontificia Universidad Javeriana
 #Codigo sensores - BetterHorse
-#jejejejjee
+#Daniel Andres Pineda
+#Sebastian Yagama
+#Libardo
+#Andres Gomez
 import pyrebase
 import sys
 import time
