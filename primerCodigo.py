@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 #librerias prueba sebastian
+#Pontificia Universidad Javeriana
+#Codigo sensores - BetterHorse
 #jejejejjee
 import pyrebase
 import sys
