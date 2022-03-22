@@ -1,10 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:login_y_registro/common/theme_helper.dart';
+import 'package:login_y_registro/common/tema_principal.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
-import 'profile_page.dart';
+import 'menu_y_principal.dart';
 import 'widgets/header_widget.dart';
 
 class ForgotPasswordVerificationPage extends StatefulWidget {

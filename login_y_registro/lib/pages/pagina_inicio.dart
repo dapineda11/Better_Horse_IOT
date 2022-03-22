@@ -2,11 +2,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:login_y_registro/common/theme_helper.dart';
+import 'package:login_y_registro/common/tema_principal.dart';
 
-import 'forgot_password_page.dart';
-import 'profile_page.dart';
-import 'registration_page.dart';
+import 'recuperar_contrasena.dart';
+import 'menu_y_principal.dart';
+import 'pagina_registro.dart';
 import 'widgets/header_widget.dart';
 
 class LoginPage extends StatefulWidget{

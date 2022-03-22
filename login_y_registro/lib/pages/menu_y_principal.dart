@@ -2,13 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:login_y_registro/pages/login_page.dart';
-import 'package:login_y_registro/pages/splash_screen.dart';
+import 'package:login_y_registro/pages/pagina_inicio.dart';
+import 'package:login_y_registro/pages/pantalla_animacion.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
-
-import 'forgot_password_page.dart';
-import 'forgot_password_verification_page.dart';
-import 'registration_page.dart';
+import 'recuperar_contrasena.dart';
+import 'verificacion_contrasena.dart';
+import 'pagina_registro.dart';
 
 class ProfilePage extends StatefulWidget{
 
@@ -20,8 +19,8 @@ class ProfilePage extends StatefulWidget{
 
 class _ProfilePageState extends State<ProfilePage>{
 
-  double  _drawerIconSize = 24;
-  double _drawerFontSize = 17;
+  double  _tamanoIconos = 24;
+  double _tamanoLetra = 17;
 
   @override
   Widget build(BuildContext context) {
@@ -94,15 +93,15 @@ class _ProfilePageState extends State<ProfilePage>{
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.thermostat, size: _drawerIconSize, color: Theme.of(context).accentColor,),
+                leading: Icon(Icons.thermostat, size: _tamanoIconos, color: Theme.of(context).accentColor,),
                 title: Text('Temperatura', style: TextStyle(fontSize: 17, color: Theme.of(context).accentColor),),
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen(title: "Temperatura")));
                 },
               ),
               ListTile(
-                leading: Icon(Icons.air,size: _drawerIconSize,color: Theme.of(context).accentColor),
-                title: Text('Calidad del aire', style: TextStyle(fontSize: _drawerFontSize, color: Theme.of(context).accentColor),
+                leading: Icon(Icons.air,size: _tamanoIconos,color: Theme.of(context).accentColor),
+                title: Text('Calidad del aire', style: TextStyle(fontSize: _tamanoLetra, color: Theme.of(context).accentColor),
                 ),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
@@ -110,32 +109,32 @@ class _ProfilePageState extends State<ProfilePage>{
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
-                leading: Icon(Icons.water_drop_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor),
-                title: Text('Humedad relativa',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.water_drop_outlined, size: _tamanoIconos,color: Theme.of(context).accentColor),
+                title: Text('Humedad relativa',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()),);
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
-                leading: Icon(Icons.food_bank_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('Alimentación',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.food_bank_outlined, size: _tamanoIconos,color: Theme.of(context).accentColor,),
+                title: Text('Alimentación',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
-                leading: Icon(Icons.engineering, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('¿Quiénes somos?',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.engineering, size: _tamanoIconos,color: Theme.of(context).accentColor,),
+                title: Text('¿Quiénes somos?',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordVerificationPage()), );
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
-                leading: Icon(Icons.logout_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('Salir',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.logout_rounded, size: _tamanoIconos,color: Theme.of(context).accentColor,),
+                title: Text('Salir',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
                 onTap: () {
                   SystemNavigator.pop();
                 },
