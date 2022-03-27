@@ -1,28 +1,36 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
+import 'package:login_y_registro/negocio/logController.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'recuperar_contrasena.dart';
 import 'menu_y_principal.dart';
 import 'pagina_registro.dart';
 import 'widgets/header_widget.dart';
 
-class LoginPage extends StatefulWidget{
-  const LoginPage({Key? key}): super(key:key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage>{
+class _LoginPageState extends State<LoginPage> {
   double _headerHeight = 300;
+
+  //formularios
   Key _formKey = GlobalKey<FormState>();
+
+  TextEditingController emailctrl = new TextEditingController();
+  TextEditingController contrasenactrl = new TextEditingController();
+
+  //controladores de negocio
+  final ctrLogin = logController();
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -36,12 +44,14 @@ class _LoginPageState extends State<LoginPage>{
             SafeArea(
               child: Container(
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10),// This will be the login form
+                  margin: EdgeInsets.fromLTRB(
+                      20, 10, 20, 10), // This will be the login form
                   child: Column(
                     children: [
                       Text(
                         'Better Horse',
-                        style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 40, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         'Inicio de sesión',
@@ -54,74 +64,114 @@ class _LoginPageState extends State<LoginPage>{
                             children: [
                               Container(
                                 child: TextField(
-                                  decoration: ThemeHelper().textInputDecoration('Email', 'Ingrese su correo'),
+                                  controller: emailctrl,
+                                  decoration: ThemeHelper().textInputDecoration(
+                                      'Email', 'Ingrese su correo'),
                                 ),
-                                decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                                decoration:
+                                    ThemeHelper().inputBoxDecorationShaddow(),
                               ),
                               SizedBox(height: 30.0),
                               Container(
                                 child: TextField(
+                                  controller: contrasenactrl,
                                   obscureText: true,
-                                  decoration: ThemeHelper().textInputDecoration('Contraseña', 'Ingrese su contraseña'),
+                                  decoration: ThemeHelper().textInputDecoration(
+                                      'Contraseña', 'Ingrese su contraseña'),
                                 ),
-                                decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                                decoration:
+                                    ThemeHelper().inputBoxDecorationShaddow(),
                               ),
                               SizedBox(height: 15.0),
                               Container(
-                                margin: EdgeInsets.fromLTRB(10,0,10,20),
+                                margin: EdgeInsets.fromLTRB(10, 0, 10, 20),
                                 alignment: Alignment.topRight,
                                 child: GestureDetector(
                                   onTap: () {
-                                    Navigator.push( context, MaterialPageRoute( builder: (context) => ForgotPasswordPage()), );
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ForgotPasswordPage()),
+                                    );
                                   },
-                                  child: Text( "Olvidé mi contraseña", style: TextStyle( color: Colors.grey, ),
+                                  child: Text(
+                                    "Olvidé mi contraseña",
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                 ),
                               ),
                               Container(
-                                decoration: ThemeHelper().buttonBoxDecoration(context),
+                                decoration:
+                                    ThemeHelper().buttonBoxDecoration(context),
                                 child: ElevatedButton(
                                   style: ThemeHelper().buttonStyle(),
                                   child: Padding(
-                                    padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
-                                    child: Text('Ingresar'.toUpperCase(), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),),
+                                    padding:
+                                        EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                    child: Text(
+                                      'Ingresar'.toUpperCase(),
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
                                   ),
-                                  onPressed: (){
-                                    //After successful login we will redirect to profile page. Let's create profile page now
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                                  onPressed: () async {
+                                    var res = await ctrLogin.verificar(
+                                        emailctrl.text, contrasenactrl.text);
+
+                                    if (res == 1) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ProfilePage()));
+                                    } else {
+                                      Fluttertoast.showToast(
+                                          msg: "Imposible iniciar sesión",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          webPosition: "center",
+                                          backgroundColor: Colors.red,
+                                          textColor: Colors.white,
+                                          fontSize: 50);
+                                    }
                                   },
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.fromLTRB(10,20,10,20),
+                                margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
                                 //child: Text('Don\'t have an account? Create'),
-                                child: Text.rich(
-                                    TextSpan(
-                                        children: [
-                                          TextSpan(text: "¿No tiene una cuenta creada? "),
-                                          TextSpan(
-                                            text: 'Crear nueva cuenta',
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()));
-                                              },
-                                            style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).accentColor),
-                                          ),
-                                        ]
-                                    )
-                                ),
+                                child: Text.rich(TextSpan(children: [
+                                  TextSpan(
+                                      text: "¿No tiene una cuenta creada? "),
+                                  TextSpan(
+                                    text: 'Crear nueva cuenta',
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    RegistrationPage()));
+                                      },
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Theme.of(context).accentColor),
+                                  ),
+                                ])),
                               ),
                             ],
-                          )
-                      ),
+                          )),
                     ],
-                  )
-              ),
+                  )),
             ),
           ],
         ),
       ),
     );
-
   }
 }
