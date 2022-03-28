@@ -3,22 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:login_y_registro/negocio/regController.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'menu_y_usuario.dart';
 
-class PaginaRegistro extends  StatefulWidget{
+class PaginaRegistro extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _PaginaRegistroState();
   }
 }
 
-class _PaginaRegistroState extends State<PaginaRegistro>{
-
+class _PaginaRegistroState extends State<PaginaRegistro> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
+
+  final ctrReg = regController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +50,8 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
-                                  border: Border.all(
-                                      width: 5, color: Colors.white),
+                                  border:
+                                      Border.all(width: 5, color: Colors.white),
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
@@ -76,63 +78,82 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                             ],
                           ),
                         ),
-                        SizedBox(height: 30,),
-                        Container(
-                          child: TextFormField(
-                            decoration: TemaPrincipal().textInputDecoration('Primer Nombre', 'Ingrese su primer nombre'),
-                          ),
-                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
+                        SizedBox(
+                          height: 30,
                         ),
-                        SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
-                            decoration: TemaPrincipal().textInputDecoration('Apellidos', 'Ingrese sus apellidos'),
+                            decoration: TemaPrincipal().textInputDecoration(
+                                'Primer Nombre', 'Ingrese su primer nombre'),
                           ),
-                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
+                          decoration:
+                              TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 20.0),
-                        Container(
-                          child: TextFormField(
-                            decoration: TemaPrincipal().textInputDecoration('Dirección', 'Ingrese la dirección de su finca/granja'),
-                          ),
-                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
+                        SizedBox(
+                          height: 30,
                         ),
-                        SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            decoration: TemaPrincipal().textInputDecoration('Ciudad', 'Ingrese su ciudad/municipio de ubicación'),
+                            decoration: TemaPrincipal().textInputDecoration(
+                                'Apellidos', 'Ingrese sus apellidos'),
                           ),
-                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 20.0),
-                        Container(
-                          child: TextFormField(
-                            decoration: TemaPrincipal().textInputDecoration("Correo electrónico", "Ingrese su email"),
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (val) {
-                              if(!(val!.isEmpty) && !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(val)){
-                                return "Ingrese una dirección valida de correo";
-                              }
-                              return null;
-                            },
-                          ),
-                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
+                          decoration:
+                              TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
                             decoration: TemaPrincipal().textInputDecoration(
-                                "Celular",
-                                "Ingrese su número de teléfono"),
+                                'Dirección',
+                                'Ingrese la dirección de su finca/granja'),
+                          ),
+                          decoration:
+                              TemaPrincipal().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            decoration: TemaPrincipal().textInputDecoration(
+                                'Ciudad',
+                                'Ingrese su ciudad/municipio de ubicación'),
+                          ),
+                          decoration:
+                              TemaPrincipal().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            decoration: TemaPrincipal().textInputDecoration(
+                                "Correo electrónico", "Ingrese su email"),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (val) {
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                      .hasMatch(val)) {
+                                return "Ingrese una dirección valida de correo";
+                              }
+                              return null;
+                            },
+                          ),
+                          decoration:
+                              TemaPrincipal().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            decoration: TemaPrincipal().textInputDecoration(
+                                "Celular", "Ingrese su número de teléfono"),
                             keyboardType: TextInputType.phone,
                             validator: (val) {
-                              if(!(val!.isEmpty) && !RegExp(r"^(\d+)*$").hasMatch(val)){
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
                                 return "Ingrese un número de teléfono válido";
                               }
                               return null;
                             },
                           ),
-                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
+                          decoration:
+                              TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
@@ -147,7 +168,8 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                               return null;
                             },
                           ),
-                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
+                          decoration:
+                              TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 15.0),
                         FormField<bool>(
@@ -164,7 +186,10 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                                             state.didChange(value);
                                           });
                                         }),
-                                    Text("Acepto los términos y condiciones", style: TextStyle(color: Colors.grey),),
+                                    Text(
+                                      "Acepto los términos y condiciones",
+                                      style: TextStyle(color: Colors.grey),
+                                    ),
                                   ],
                                 ),
                                 Container(
@@ -172,7 +197,10 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                                   child: Text(
                                     state.errorText ?? '',
                                     textAlign: TextAlign.left,
-                                    style: TextStyle(color: Theme.of(context).errorColor,fontSize: 12,),
+                                    style: TextStyle(
+                                      color: Theme.of(context).errorColor,
+                                      fontSize: 12,
+                                    ),
                                   ),
                                 )
                               ],
@@ -188,11 +216,13 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                         ),
                         SizedBox(height: 20.0),
                         Container(
-                          decoration: TemaPrincipal().buttonBoxDecoration(context),
+                          decoration:
+                              TemaPrincipal().buttonBoxDecoration(context),
                           child: ElevatedButton(
                             style: TemaPrincipal().buttonStyle(),
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                              padding:
+                                  const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
                                 "Registrarse".toUpperCase(),
                                 style: TextStyle(
@@ -204,17 +234,15 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
+                                ctrReg.insertarUsuario("prueba", "123");
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
-                                        builder: (context) => MenuYUsuario()
-                                    ),
-                                        (Route<dynamic> route) => false
-                                );
+                                        builder: (context) => MenuYUsuario()),
+                                    (Route<dynamic> route) => false);
                               }
                             },
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -226,5 +254,4 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
       ),
     );
   }
-
 }

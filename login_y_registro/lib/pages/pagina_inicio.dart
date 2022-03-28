@@ -65,8 +65,9 @@ class _PaginaInicioState extends State<PaginaInicio> {
                               Container(
                                 child: TextField(
                                   controller: emailctrl,
-                                  decoration: TemaPrincipal().textInputDecoration(
-                                      'Email', 'Ingrese su correo'),
+                                  decoration: TemaPrincipal()
+                                      .textInputDecoration(
+                                          'Email', 'Ingrese su correo'),
                                 ),
                                 decoration:
                                     TemaPrincipal().inputBoxDecorationShaddow(),
@@ -76,8 +77,9 @@ class _PaginaInicioState extends State<PaginaInicio> {
                                 child: TextField(
                                   controller: contrasenactrl,
                                   obscureText: true,
-                                  decoration: TemaPrincipal().textInputDecoration(
-                                      'Contraseña', 'Ingrese su contraseña'),
+                                  decoration: TemaPrincipal()
+                                      .textInputDecoration('Contraseña',
+                                          'Ingrese su contraseña'),
                                 ),
                                 decoration:
                                     TemaPrincipal().inputBoxDecorationShaddow(),
@@ -104,8 +106,8 @@ class _PaginaInicioState extends State<PaginaInicio> {
                                 ),
                               ),
                               Container(
-                                decoration:
-                                    TemaPrincipal().buttonBoxDecoration(context),
+                                decoration: TemaPrincipal()
+                                    .buttonBoxDecoration(context),
                                 child: ElevatedButton(
                                   style: TemaPrincipal().buttonStyle(),
                                   child: Padding(
