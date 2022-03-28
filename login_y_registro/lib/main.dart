@@ -32,7 +32,7 @@ class LoginUiApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade50,
         primarySwatch: Colors.grey,
       ),
-      home: SplashScreen(title: 'Inicio de sesión Better Horse'),
+      home: PantallaAnimacion(title: 'Inicio de sesión Better Horse'),
     );
   }
 }

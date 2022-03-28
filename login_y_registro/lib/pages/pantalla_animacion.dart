@@ -4,24 +4,24 @@ import 'package:flutter/material.dart';
 
 import 'pagina_inicio.dart';
 
-class SplashScreen extends StatefulWidget {
-  SplashScreen({Key? key, required this.title}) : super(key: key);
+class PantallaAnimacion extends StatefulWidget {
+  PantallaAnimacion({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _PantallaAnimacionState createState() => _PantallaAnimacionState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _PantallaAnimacionState extends State<PantallaAnimacion> {
   bool _isVisible = false;
 
-  _SplashScreenState(){
+  _PantallaAnimacionState(){
 
     new Timer(const Duration(milliseconds: 3000), (){
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
+            MaterialPageRoute(builder: (context) => PaginaInicio()), (route) => false);
       });
     });
 

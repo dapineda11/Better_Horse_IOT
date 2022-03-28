@@ -7,14 +7,14 @@ import 'package:hexcolor/hexcolor.dart';
 
 import 'menu_y_principal.dart';
 
-class RegistrationPage extends  StatefulWidget{
+class PaginaRegistro extends  StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    return _RegistrationPageState();
+    return _PaginaRegistroState();
   }
 }
 
-class _RegistrationPageState extends State<RegistrationPage>{
+class _PaginaRegistroState extends State<PaginaRegistro>{
 
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
@@ -86,7 +86,21 @@ class _RegistrationPageState extends State<RegistrationPage>{
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Apellido', 'Ingrese su apellido'),
+                            decoration: ThemeHelper().textInputDecoration('Apellidos', 'Ingrese sus apellidos'),
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            decoration: ThemeHelper().textInputDecoration('Dirección', 'Ingrese la dirección de su finca/granja'),
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            decoration: ThemeHelper().textInputDecoration('Ciudad', 'Ingrese su ciudad/municipio de ubicación'),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),

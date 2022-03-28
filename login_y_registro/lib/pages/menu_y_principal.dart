@@ -96,7 +96,7 @@ class _ProfilePageState extends State<ProfilePage>{
                 leading: Icon(Icons.thermostat, size: _tamanoIconos, color: Theme.of(context).accentColor,),
                 title: Text('Temperatura', style: TextStyle(fontSize: 17, color: Theme.of(context).accentColor),),
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen(title: "Temperatura")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => PantallaAnimacion(title: "Temperatura")));
                 },
               ),
               ListTile(
@@ -104,7 +104,7 @@ class _ProfilePageState extends State<ProfilePage>{
                 title: Text('Calidad del aire', style: TextStyle(fontSize: _tamanoLetra, color: Theme.of(context).accentColor),
                 ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => PaginaInicio()),);
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
@@ -112,7 +112,7 @@ class _ProfilePageState extends State<ProfilePage>{
                 leading: Icon(Icons.water_drop_outlined, size: _tamanoIconos,color: Theme.of(context).accentColor),
                 title: Text('Humedad relativa',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => PaginaRegistro()),);
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
@@ -120,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage>{
                 leading: Icon(Icons.food_bank_outlined, size: _tamanoIconos,color: Theme.of(context).accentColor,),
                 title: Text('Alimentación',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
                 onTap: () {
-                  Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
+                  Navigator.push( context, MaterialPageRoute(builder: (context) => RecuperarContrasena()),);
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),

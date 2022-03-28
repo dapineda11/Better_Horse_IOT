@@ -10,14 +10,14 @@ import 'menu_y_principal.dart';
 import 'pagina_registro.dart';
 import 'widgets/header_widget.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class PaginaInicio extends StatefulWidget {
+  const PaginaInicio({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _PaginaInicioState createState() => _PaginaInicioState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _PaginaInicioState extends State<PaginaInicio> {
   double _headerHeight = 300;
 
   //formularios
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              ForgotPasswordPage()),
+                                              RecuperarContrasena()),
                                     );
                                   },
                                   child: Text(
@@ -156,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    RegistrationPage()));
+                                                    PaginaRegistro()));
                                       },
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,

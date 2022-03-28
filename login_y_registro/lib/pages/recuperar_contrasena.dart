@@ -8,14 +8,14 @@ import 'verificacion_contrasena.dart';
 import 'pagina_inicio.dart';
 import 'widgets/header_widget.dart';
 
-class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({Key? key}) : super(key: key);
+class RecuperarContrasena extends StatefulWidget {
+  const RecuperarContrasena({Key? key}) : super(key: key);
 
   @override
-  _ForgotPasswordPageState createState() => _ForgotPasswordPageState();
+  _RecuperarContrasenaState createState() => _RecuperarContrasenaState();
 }
 
-class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+class _RecuperarContrasenaState extends State<RecuperarContrasena> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -100,7 +100,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                   padding: const EdgeInsets.fromLTRB(
                                       40, 10, 40, 10),
                                   child: Text(
-                                    "Send".toUpperCase(),
+                                    "Enviar".toUpperCase(),
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -130,7 +130,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                       ..onTap = () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => LoginPage()),
+                                          MaterialPageRoute(builder: (context) => PaginaInicio()),
                                         );
                                       },
                                     style: TextStyle(
