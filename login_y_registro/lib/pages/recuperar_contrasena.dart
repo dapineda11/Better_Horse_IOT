@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
 
-import 'verificacion_contrasena.dart';
+import 'quienes_somos.dart';
 import 'pagina_inicio.dart';
 import 'widgets/header_widget.dart';
 
@@ -61,7 +61,7 @@ class _RecuperarContrasenaState extends State<RecuperarContrasena> {
                               // textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 10,),
-                            Text('A continuación, le enviaremos un código de verificación a su correo',
+                            Text('A continuación, le enviaremos un código de verificación a dicho email',
                               style: TextStyle(
                                 color: Colors.black38,
                                 // fontSize: 20,
@@ -78,7 +78,7 @@ class _RecuperarContrasenaState extends State<RecuperarContrasena> {
                           children: <Widget>[
                             Container(
                               child: TextFormField(
-                                decoration: ThemeHelper().textInputDecoration("Correo electrónico", "Ingrese su dirección de correo"),
+                                decoration: TemaPrincipal().textInputDecoration("Correo electrónico", "Ingrese su dirección de correo"),
                                 validator: (val){
                                   if(val!.isEmpty){
                                     return "Ingrese una dirección de correo";
@@ -89,13 +89,13 @@ class _RecuperarContrasenaState extends State<RecuperarContrasena> {
                                   return null;
                                 },
                               ),
-                              decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                              decoration: TemaPrincipal().inputBoxDecorationShaddow(),
                             ),
                             SizedBox(height: 40.0),
                             Container(
-                              decoration: ThemeHelper().buttonBoxDecoration(context),
+                              decoration: TemaPrincipal().buttonBoxDecoration(context),
                               child: ElevatedButton(
-                                style: ThemeHelper().buttonStyle(),
+                                style: TemaPrincipal().buttonStyle(),
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(
                                       40, 10, 40, 10),
@@ -113,7 +113,7 @@ class _RecuperarContrasenaState extends State<RecuperarContrasena> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => ForgotPasswordVerificationPage()),
+                                          builder: (context) => QuienesSomos()),
                                     );
                                   }
                                 },

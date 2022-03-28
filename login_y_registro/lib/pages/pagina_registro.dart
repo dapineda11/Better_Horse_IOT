@@ -5,7 +5,7 @@ import 'package:login_y_registro/pages/widgets/header_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import 'menu_y_principal.dart';
+import 'menu_y_usuario.dart';
 
 class PaginaRegistro extends  StatefulWidget{
   @override
@@ -79,35 +79,35 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Primer Nombre', 'Ingrese su primer nombre'),
+                            decoration: TemaPrincipal().textInputDecoration('Primer Nombre', 'Ingrese su primer nombre'),
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Apellidos', 'Ingrese sus apellidos'),
+                            decoration: TemaPrincipal().textInputDecoration('Apellidos', 'Ingrese sus apellidos'),
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Dirección', 'Ingrese la dirección de su finca/granja'),
+                            decoration: TemaPrincipal().textInputDecoration('Dirección', 'Ingrese la dirección de su finca/granja'),
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Ciudad', 'Ingrese su ciudad/municipio de ubicación'),
+                            decoration: TemaPrincipal().textInputDecoration('Ciudad', 'Ingrese su ciudad/municipio de ubicación'),
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration("Correo electrónico", "Ingrese su email"),
+                            decoration: TemaPrincipal().textInputDecoration("Correo electrónico", "Ingrese su email"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
                               if(!(val!.isEmpty) && !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(val)){
@@ -116,12 +116,12 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                               return null;
                             },
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration(
+                            decoration: TemaPrincipal().textInputDecoration(
                                 "Celular",
                                 "Ingrese su número de teléfono"),
                             keyboardType: TextInputType.phone,
@@ -132,13 +132,13 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                               return null;
                             },
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
                             obscureText: true,
-                            decoration: ThemeHelper().textInputDecoration(
+                            decoration: TemaPrincipal().textInputDecoration(
                                 "Contraseña*", "Ingrese su contraseña"),
                             validator: (val) {
                               if (val!.isEmpty) {
@@ -147,7 +147,7 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                               return null;
                             },
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          decoration: TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 15.0),
                         FormField<bool>(
@@ -188,9 +188,9 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                         ),
                         SizedBox(height: 20.0),
                         Container(
-                          decoration: ThemeHelper().buttonBoxDecoration(context),
+                          decoration: TemaPrincipal().buttonBoxDecoration(context),
                           child: ElevatedButton(
-                            style: ThemeHelper().buttonStyle(),
+                            style: TemaPrincipal().buttonStyle(),
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
@@ -206,7 +206,7 @@ class _PaginaRegistroState extends State<PaginaRegistro>{
                               if (_formKey.currentState!.validate()) {
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
-                                        builder: (context) => ProfilePage()
+                                        builder: (context) => MenuYUsuario()
                                     ),
                                         (Route<dynamic> route) => false
                                 );

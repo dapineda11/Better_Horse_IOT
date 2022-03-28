@@ -13,10 +13,10 @@ import 'package:hexcolor/hexcolor.dart';
 import 'pages/pantalla_animacion.dart';
 
 void main() {
-  runApp(LoginUiApp());
+  runApp(BetterHorseApp());
 }
 
-class LoginUiApp extends StatelessWidget {
+class BetterHorseApp extends StatelessWidget {
 
   Color _primaryColor = HexColor('#be8a62');//Cafe clarito
   Color _accentColor = HexColor('#a47450');//Cafe oscuro

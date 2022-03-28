@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class ThemeHelper{
+class TemaPrincipal{
 
   InputDecoration textInputDecoration([String lableText="", String hintText = ""]){
     return InputDecoration(

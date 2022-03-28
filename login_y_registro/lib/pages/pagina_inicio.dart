@@ -6,7 +6,7 @@ import 'package:login_y_registro/negocio/logController.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'recuperar_contrasena.dart';
-import 'menu_y_principal.dart';
+import 'menu_y_usuario.dart';
 import 'pagina_registro.dart';
 import 'widgets/header_widget.dart';
 
@@ -65,22 +65,22 @@ class _PaginaInicioState extends State<PaginaInicio> {
                               Container(
                                 child: TextField(
                                   controller: emailctrl,
-                                  decoration: ThemeHelper().textInputDecoration(
+                                  decoration: TemaPrincipal().textInputDecoration(
                                       'Email', 'Ingrese su correo'),
                                 ),
                                 decoration:
-                                    ThemeHelper().inputBoxDecorationShaddow(),
+                                    TemaPrincipal().inputBoxDecorationShaddow(),
                               ),
                               SizedBox(height: 30.0),
                               Container(
                                 child: TextField(
                                   controller: contrasenactrl,
                                   obscureText: true,
-                                  decoration: ThemeHelper().textInputDecoration(
+                                  decoration: TemaPrincipal().textInputDecoration(
                                       'Contraseña', 'Ingrese su contraseña'),
                                 ),
                                 decoration:
-                                    ThemeHelper().inputBoxDecorationShaddow(),
+                                    TemaPrincipal().inputBoxDecorationShaddow(),
                               ),
                               SizedBox(height: 15.0),
                               Container(
@@ -105,9 +105,9 @@ class _PaginaInicioState extends State<PaginaInicio> {
                               ),
                               Container(
                                 decoration:
-                                    ThemeHelper().buttonBoxDecoration(context),
+                                    TemaPrincipal().buttonBoxDecoration(context),
                                 child: ElevatedButton(
-                                  style: ThemeHelper().buttonStyle(),
+                                  style: TemaPrincipal().buttonStyle(),
                                   child: Padding(
                                     padding:
                                         EdgeInsets.fromLTRB(40, 10, 40, 10),
@@ -128,7 +128,7 @@ class _PaginaInicioState extends State<PaginaInicio> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  ProfilePage()));
+                                                  MenuYUsuario()));
                                     } else {
                                       Fluttertoast.showToast(
                                           msg: "Imposible iniciar sesión",

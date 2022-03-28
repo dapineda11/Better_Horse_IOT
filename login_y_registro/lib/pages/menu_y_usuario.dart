@@ -6,18 +6,18 @@ import 'package:login_y_registro/pages/pagina_inicio.dart';
 import 'package:login_y_registro/pages/pantalla_animacion.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
 import 'recuperar_contrasena.dart';
-import 'verificacion_contrasena.dart';
+import 'quienes_somos.dart';
 import 'pagina_registro.dart';
 
-class ProfilePage extends StatefulWidget{
+class MenuYUsuario extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState() {
-    return _ProfilePageState();
+    return _MenuYUsuarioState();
   }
 }
 
-class _ProfilePageState extends State<ProfilePage>{
+class _MenuYUsuarioState extends State<MenuYUsuario>{
 
   double  _tamanoIconos = 24;
   double _tamanoLetra = 17;
@@ -128,7 +128,7 @@ class _ProfilePageState extends State<ProfilePage>{
                 leading: Icon(Icons.engineering, size: _tamanoIconos,color: Theme.of(context).accentColor,),
                 title: Text('¿Quiénes somos?',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
                 onTap: () {
-                  Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordVerificationPage()), );
+                  Navigator.push( context, MaterialPageRoute(builder: (context) => QuienesSomos()), );
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
