@@ -5,6 +5,7 @@ import 'package:login_y_registro/pages/widgets/header_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:login_y_registro/negocio/regController.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'menu_y_usuario.dart';
 
@@ -17,6 +18,17 @@ class PaginaRegistro extends StatefulWidget {
 
 class _PaginaRegistroState extends State<PaginaRegistro> {
   final _formKey = GlobalKey<FormState>();
+
+  TextEditingController nombrectrl = new TextEditingController();
+  TextEditingController apellidoctrl = new TextEditingController();
+  TextEditingController celularctrl = new TextEditingController();
+
+  TextEditingController emailctrl = new TextEditingController();
+  TextEditingController contrasenactrl = new TextEditingController();
+
+  TextEditingController direccionctrl = new TextEditingController();
+  TextEditingController ciudadctrl = new TextEditingController();
+
   bool checkedValue = false;
   bool checkboxValue = false;
 
@@ -83,6 +95,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                         ),
                         Container(
                           child: TextFormField(
+                            controller: nombrectrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Primer Nombre', 'Ingrese su primer nombre'),
                           ),
@@ -94,6 +107,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                         ),
                         Container(
                           child: TextFormField(
+                            controller: apellidoctrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Apellidos', 'Ingrese sus apellidos'),
                           ),
@@ -103,6 +117,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: direccionctrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Dirección',
                                 'Ingrese la dirección de su finca/granja'),
@@ -113,6 +128,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: ciudadctrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Ciudad',
                                 'Ingrese su ciudad/municipio de ubicación'),
@@ -123,6 +139,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: emailctrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 "Correo electrónico", "Ingrese su email"),
                             keyboardType: TextInputType.emailAddress,
@@ -141,6 +158,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: celularctrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 "Celular", "Ingrese su número de teléfono"),
                             keyboardType: TextInputType.phone,
@@ -158,6 +176,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: contrasenactrl,
                             obscureText: true,
                             decoration: TemaPrincipal().textInputDecoration(
                                 "Contraseña*", "Ingrese su contraseña"),
@@ -232,13 +251,36 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                 ),
                               ),
                             ),
-                            onPressed: () {
+                            onPressed: () async {
                               if (_formKey.currentState!.validate()) {
-                                ctrReg.insertarUsuario("prueba", "123");
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (context) => MenuYUsuario()),
-                                    (Route<dynamic> route) => false);
+                                var res = await ctrReg.verificar(
+                                    emailctrl.text, contrasenactrl.text);
+
+                                if (res == 1) {
+                                  var id = "125";
+                                  ctrReg.insertarPersona(nombrectrl.text,
+                                      apellidoctrl.text, celularctrl.text, id);
+                                  ctrReg.insertarUsuario(
+                                      emailctrl.text, contrasenactrl.text, id);
+                                  ctrReg.insertarUbicacion(
+                                      ciudadctrl.text, direccionctrl.text, id);
+
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                      MaterialPageRoute(
+                                          builder: (context) => MenuYUsuario()),
+                                      (Route<dynamic> route) => false);
+                                } else {
+                                  Fluttertoast.showToast(
+                                      msg:
+                                          "Los datos concuerdan con los de un usuario ya registrado",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      webPosition: "center",
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.white,
+                                      fontSize: 50,
+                                      timeInSecForIosWeb: 2);
+                                }
                               }
                             },
                           ),

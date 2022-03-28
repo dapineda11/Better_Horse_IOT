@@ -8,9 +8,33 @@ class regController {
   // Constructores
   // metodos
 
-  Future<void> insertarUsuario(String nombre, String contrasena) async {
+  Future<void> insertarUsuario(
+      String nombre, String contrasena, String id) async {
     String theUrl = 'https://talleriot.000webhostapp.com/postUsuario.php';
-    var data = {"Nombre": nombre, "Contraseña": contrasena, "Id": "5"};
+    var data = {"Nombre": nombre, "Contraseña": contrasena, "Id": id};
+
+    Uri uri = Uri.parse(theUrl);
+    var response = await http.post(uri, body: data);
+  }
+
+  Future<void> insertarPersona(
+      String nombre, String apellido, String celular, String id) async {
+    String theUrl = 'https://talleriot.000webhostapp.com/postPersona.php';
+    var data = {
+      "Nombre": nombre,
+      "Apellido": apellido,
+      "Id": id,
+      "Celular": celular
+    };
+
+    Uri uri = Uri.parse(theUrl);
+    var response = await http.post(uri, body: data);
+  }
+
+  Future<void> insertarUbicacion(
+      String ciudad, String direccion, String id) async {
+    String theUrl = 'https://talleriot.000webhostapp.com/postUbicacion.php';
+    var data = {"Ciudad": ciudad, "Direccion": direccion, "Id": id};
 
     Uri uri = Uri.parse(theUrl);
     var response = await http.post(uri, body: data);
@@ -26,9 +50,8 @@ class regController {
     var response = await http.post(uri, body: data);
     var responseBody = json.decode(response.body);
 
-    if (responseBody.length != 0) {
-      var user = Usuario.fromJson(responseBody[0]);
-      res = user.validarIdentidad(contrasena);
+    if (responseBody.length == 0) {
+      res = 1;
     }
     return res;
   }

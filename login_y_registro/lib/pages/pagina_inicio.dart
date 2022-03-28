@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
 import 'package:login_y_registro/negocio/logController.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'recuperar_contrasena.dart';
 import 'menu_y_usuario.dart';
