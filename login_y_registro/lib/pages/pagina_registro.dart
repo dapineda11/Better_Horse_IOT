@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
@@ -41,6 +42,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
 
   final ImagePicker _picker = ImagePicker();
   File? image;
+  late Uint8List webImage;
 
   @override
   Widget build(BuildContext context) {
@@ -103,17 +105,17 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                               : Container(
                                   padding: EdgeInsets.all(10),
                                   child: CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        'https://avatars.githubusercontent.com/u/109951?s=400&v=4'),
+                                    backgroundImage: MemoryImage(webImage),
                                     radius: 80,
                                   ),
                                 ),
                           onTap: () async {
-                            final temp = await _picker.pickImage(
+                            XFile? temp = await _picker.pickImage(
                                 source: ImageSource.gallery);
                             if (temp != null) {
+                              var f = await temp.readAsBytes();
                               setState(() {
-                                this.image = File(temp.path);
+                                webImage = f;
                                 if (NexistImage) {
                                   NexistImage = !NexistImage;
                                 }
