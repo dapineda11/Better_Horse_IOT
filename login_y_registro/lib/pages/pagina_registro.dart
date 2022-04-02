@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
@@ -6,8 +7,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:login_y_registro/negocio/regController.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'menu_y_usuario.dart';
+
+//flutter run -d chrome --web-port=8080 --web-hostname=127.0.0.1
 
 class PaginaRegistro extends StatefulWidget {
   @override
@@ -31,8 +35,12 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
 
   bool checkedValue = false;
   bool checkboxValue = false;
+  bool NexistImage = true;
 
   final ctrReg = regController();
+
+  final ImagePicker _picker = ImagePicker();
+  File? image;
 
   @override
   Widget build(BuildContext context) {
@@ -56,39 +64,62 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                     child: Column(
                       children: [
                         GestureDetector(
-                          child: Stack(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  border:
-                                      Border.all(width: 5, color: Colors.white),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 20,
-                                      offset: const Offset(5, 5),
+                          child: NexistImage
+                              ? Stack(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        border: Border.all(
+                                            width: 5, color: Colors.white),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.black12,
+                                            blurRadius: 20,
+                                            offset: const Offset(5, 5),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Icon(
+                                        Icons.person,
+                                        color: Colors.grey.shade300,
+                                        size: 80.0,
+                                      ),
+                                    ),
+                                    Container(
+                                      padding:
+                                          EdgeInsets.fromLTRB(80, 80, 0, 0),
+                                      child: Icon(
+                                        Icons.add_circle,
+                                        color: Colors.grey.shade700,
+                                        size: 25.0,
+                                      ),
                                     ),
                                   ],
+                                )
+                              : Container(
+                                  padding: EdgeInsets.all(10),
+                                  child: CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                        'https://avatars.githubusercontent.com/u/109951?s=400&v=4'),
+                                    radius: 80,
+                                  ),
                                 ),
-                                child: Icon(
-                                  Icons.person,
-                                  color: Colors.grey.shade300,
-                                  size: 80.0,
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.fromLTRB(80, 80, 0, 0),
-                                child: Icon(
-                                  Icons.add_circle,
-                                  color: Colors.grey.shade700,
-                                  size: 25.0,
-                                ),
-                              ),
-                            ],
-                          ),
+                          onTap: () async {
+                            final temp = await _picker.pickImage(
+                                source: ImageSource.gallery);
+                            if (temp != null) {
+                              setState(() {
+                                this.image = File(temp.path);
+                                if (NexistImage) {
+                                  NexistImage = !NexistImage;
+                                }
+                              });
+                            }
+                          },
                         ),
                         SizedBox(
                           height: 30,
@@ -296,4 +327,10 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
       ),
     );
   }
+
+  // Future<XFile?> filePicker() async {
+  //  final XFile? imageFile =
+  //     await _picker.pickImage(source: ImageSource.gallery);
+  // return imageFile;
+  //}
 }
