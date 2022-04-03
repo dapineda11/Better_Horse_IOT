@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,40 +8,45 @@ import 'recuperar_contrasena.dart';
 import 'quienes_somos.dart';
 import 'pagina_registro.dart';
 
-class MenuYUsuario extends StatefulWidget{
-
+class MenuYUsuario extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _MenuYUsuarioState();
   }
 }
 
-class _MenuYUsuarioState extends State<MenuYUsuario>{
-
-  double  _tamanoIconos = 24;
+class _MenuYUsuarioState extends State<MenuYUsuario> {
+  double _tamanoIconos = 24;
   double _tamanoLetra = 17;
+  String ubicacionImagen =
+      "https://talleriot.000webhostapp.com/uploads/image.jpg";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Menu principal",
+        title: Text(
+          "Menu principal",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         elevation: 0.5,
         iconTheme: IconThemeData(color: Colors.white),
-        flexibleSpace:Container(
+        flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: <Color>[Theme.of(context).primaryColor, Theme.of(context).accentColor,]
-              )
-          ),
+                  colors: <Color>[
+                Theme.of(context).primaryColor,
+                Theme.of(context).accentColor,
+              ])),
         ),
         actions: [
           Container(
-            margin: EdgeInsets.only( top: 16, right: 16,),
+            margin: EdgeInsets.only(
+              top: 16,
+              right: 16,
+            ),
             child: Stack(
               children: <Widget>[
                 Icon(Icons.notifications),
@@ -50,9 +54,22 @@ class _MenuYUsuarioState extends State<MenuYUsuario>{
                   right: 0,
                   child: Container(
                     padding: EdgeInsets.all(1),
-                    decoration: BoxDecoration( color: Colors.red, borderRadius: BorderRadius.circular(6),),
-                    constraints: BoxConstraints( minWidth: 12, minHeight: 12, ),
-                    child: Text( '5', style: TextStyle(color: Colors.white, fontSize: 8,), textAlign: TextAlign.center,),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    constraints: BoxConstraints(
+                      minWidth: 12,
+                      minHeight: 12,
+                    ),
+                    child: Text(
+                      '5',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 )
               ],
@@ -62,17 +79,18 @@ class _MenuYUsuarioState extends State<MenuYUsuario>{
       ),
       drawer: Drawer(
         child: Container(
-          decoration:BoxDecoration(
+          decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  stops: [0.0, 1.0],
+                  stops: [
+                0.0,
+                1.0
+              ],
                   colors: [
-                    Theme.of(context).primaryColor.withOpacity(0.2),
-                    Theme.of(context).accentColor.withOpacity(0.5),
-                  ]
-              )
-          ) ,
+                Theme.of(context).primaryColor.withOpacity(0.2),
+                Theme.of(context).accentColor.withOpacity(0.5),
+              ])),
           child: ListView(
             children: [
               DrawerHeader(
@@ -82,59 +100,141 @@ class _MenuYUsuarioState extends State<MenuYUsuario>{
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     stops: [0.0, 1.0],
-                    colors: [ Theme.of(context).primaryColor,Theme.of(context).accentColor,],
+                    colors: [
+                      Theme.of(context).primaryColor,
+                      Theme.of(context).accentColor,
+                    ],
                   ),
                 ),
                 child: Container(
                   alignment: Alignment.bottomLeft,
-                  child: Text("Better Horse",
-                    style: TextStyle(fontSize: 25,color: Colors.white, fontWeight: FontWeight.bold),
+                  child: Text(
+                    "Better Horse",
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.thermostat, size: _tamanoIconos, color: Theme.of(context).accentColor,),
-                title: Text('Temperatura', style: TextStyle(fontSize: 17, color: Theme.of(context).accentColor),),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PantallaAnimacion(title: "Temperatura")));
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.air,size: _tamanoIconos,color: Theme.of(context).accentColor),
-                title: Text('Calidad del aire', style: TextStyle(fontSize: _tamanoLetra, color: Theme.of(context).accentColor),
+                leading: Icon(
+                  Icons.thermostat,
+                  size: _tamanoIconos,
+                  color: Theme.of(context).accentColor,
+                ),
+                title: Text(
+                  'Temperatura',
+                  style: TextStyle(
+                      fontSize: 17, color: Theme.of(context).accentColor),
                 ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PaginaInicio()),);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              PantallaAnimacion(title: "Temperatura")));
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
-                leading: Icon(Icons.water_drop_outlined, size: _tamanoIconos,color: Theme.of(context).accentColor),
-                title: Text('Humedad relativa',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.air,
+                    size: _tamanoIconos, color: Theme.of(context).accentColor),
+                title: Text(
+                  'Calidad del aire',
+                  style: TextStyle(
+                      fontSize: _tamanoLetra,
+                      color: Theme.of(context).accentColor),
+                ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PaginaRegistro()),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaginaInicio()),
+                  );
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
               ListTile(
-                leading: Icon(Icons.food_bank_outlined, size: _tamanoIconos,color: Theme.of(context).accentColor,),
-                title: Text('Alimentación',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.water_drop_outlined,
+                    size: _tamanoIconos, color: Theme.of(context).accentColor),
+                title: Text(
+                  'Humedad relativa',
+                  style: TextStyle(
+                      fontSize: _tamanoLetra,
+                      color: Theme.of(context).accentColor),
+                ),
                 onTap: () {
-                  Navigator.push( context, MaterialPageRoute(builder: (context) => RecuperarContrasena()),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaginaRegistro()),
+                  );
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
               ListTile(
-                leading: Icon(Icons.engineering, size: _tamanoIconos,color: Theme.of(context).accentColor,),
-                title: Text('¿Quiénes somos?',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
+                leading: Icon(
+                  Icons.food_bank_outlined,
+                  size: _tamanoIconos,
+                  color: Theme.of(context).accentColor,
+                ),
+                title: Text(
+                  'Alimentación',
+                  style: TextStyle(
+                      fontSize: _tamanoLetra,
+                      color: Theme.of(context).accentColor),
+                ),
                 onTap: () {
-                  Navigator.push( context, MaterialPageRoute(builder: (context) => QuienesSomos()), );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RecuperarContrasena()),
+                  );
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
               ListTile(
-                leading: Icon(Icons.logout_rounded, size: _tamanoIconos,color: Theme.of(context).accentColor,),
-                title: Text('Salir',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
+                leading: Icon(
+                  Icons.engineering,
+                  size: _tamanoIconos,
+                  color: Theme.of(context).accentColor,
+                ),
+                title: Text(
+                  '¿Quiénes somos?',
+                  style: TextStyle(
+                      fontSize: _tamanoLetra,
+                      color: Theme.of(context).accentColor),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QuienesSomos()),
+                  );
+                },
+              ),
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.logout_rounded,
+                  size: _tamanoIconos,
+                  color: Theme.of(context).accentColor,
+                ),
+                title: Text(
+                  'Salir',
+                  style: TextStyle(
+                      fontSize: _tamanoLetra,
+                      color: Theme.of(context).accentColor),
+                ),
                 onTap: () {
                   SystemNavigator.pop();
                 },
@@ -146,7 +246,10 @@ class _MenuYUsuarioState extends State<MenuYUsuario>{
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Container(height: 100, child: HeaderWidget(100,false,Icons.house_rounded),),
+            Container(
+              height: 100,
+              child: HeaderWidget(100, false, Icons.house_rounded),
+            ),
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.fromLTRB(25, 10, 25, 10),
@@ -160,22 +263,48 @@ class _MenuYUsuarioState extends State<MenuYUsuario>{
                       border: Border.all(width: 5, color: Colors.white),
                       color: Colors.white,
                       boxShadow: [
-                        BoxShadow(color: Colors.black12, blurRadius: 20, offset: const Offset(5, 5),),
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 20,
+                          offset: const Offset(5, 5),
+                        ),
                       ],
                     ),
-                    child: Icon(Icons.person, size: 80, color: Colors.grey.shade300,),
+                    child: ubicacionImagen == null
+                        ? Icon(
+                            Icons.person,
+                            size: 80,
+                            color: Colors.grey.shade300,
+                          )
+                        : CircleAvatar(
+                            backgroundImage: NetworkImage(ubicacionImagen),
+                            radius: 80,
+                          ),
                   ),
-                  SizedBox(height: 20,),
-                  Text('Nombre_Usuario', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
-                  SizedBox(height: 20,),
-                  Text('Usuario premium - Better Horse', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Nombre_Usuario',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Usuario premium - Better Horse',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: <Widget>[
                         Container(
-                          padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
+                          padding:
+                              const EdgeInsets.only(left: 8.0, bottom: 4.0),
                           alignment: Alignment.topLeft,
                           child: Text(
                             "Información de usuario",
@@ -240,5 +369,4 @@ class _MenuYUsuarioState extends State<MenuYUsuario>{
       ),
     );
   }
-
 }
