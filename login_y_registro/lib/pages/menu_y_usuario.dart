@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:login_y_registro/pages/pagina_inicio.dart';
 import 'package:login_y_registro/pages/pantalla_animacion.dart';
+import 'package:login_y_registro/pages/registro_caballos.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
 import 'recuperar_contrasena.dart';
 import 'quienes_somos.dart';
@@ -99,6 +100,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario>{
                   Navigator.push(context, MaterialPageRoute(builder: (context) => PantallaAnimacion(title: "Temperatura")));
                 },
               ),
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.air,size: _tamanoIconos,color: Theme.of(context).accentColor),
                 title: Text('Calidad del aire', style: TextStyle(fontSize: _tamanoLetra, color: Theme.of(context).accentColor),
@@ -129,6 +131,15 @@ class _MenuYUsuarioState extends State<MenuYUsuario>{
                 title: Text('¿Quiénes somos?',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push( context, MaterialPageRoute(builder: (context) => QuienesSomos()), );
+                },
+              ),
+              //bedroom_baby_outlined
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              ListTile(
+                leading: Icon(Icons.add_box, size: _tamanoIconos,color: Theme.of(context).accentColor,),
+                title: Text('Agregar un caballo al registro',style: TextStyle(fontSize: _tamanoLetra,color: Theme.of(context).accentColor),),
+                onTap: () {
+                  Navigator.push( context, MaterialPageRoute(builder: (context) => RegistroCaballos()), );
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),

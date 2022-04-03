@@ -53,8 +53,8 @@ class _PantallaAnimacionState extends State<PantallaAnimacion> {
         duration: Duration(milliseconds: 1500),
         child: Center(
           child: Container(
-            height: 300.0,
-            width: 300.0,
+            height: 200.0,
+            width: 200.0,
             child: Center(
               child: ClipOval(
                   child: Image.asset('assets/logo.PNG'),

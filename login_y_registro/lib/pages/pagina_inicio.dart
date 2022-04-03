@@ -18,7 +18,7 @@ class PaginaInicio extends StatefulWidget {
 }
 
 class _PaginaInicioState extends State<PaginaInicio> {
-  double _headerHeight = 300;
+  double _headerHeight = 200;
 
   //formularios
   Key _formKey = GlobalKey<FormState>();

@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:login_y_registro/negocio/regController.dart';
-import 'package:hexcolor/hexcolor.dart';
+//import 'package:hexcolor/hexcolor.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -131,6 +131,12 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                             controller: nombrectrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Primer Nombre', 'Ingrese su primer nombre'),
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "Por favor ingrese los datos solicitados";
+                              }
+                              return null;
+                            },
                           ),
                           decoration:
                               TemaPrincipal().inputBoxDecorationShaddow(),
@@ -143,9 +149,34 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                             controller: apellidoctrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Apellidos', 'Ingrese sus apellidos'),
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "Por favor ingrese los datos solicitados";
+                              }
+                              return null;
+                            },
                           ),
                           decoration:
                               TemaPrincipal().inputBoxDecorationShaddow(),
+
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            controller: celularctrl,
+                            decoration: TemaPrincipal().textInputDecoration(
+                                "Cédula", "Ingrese su número de identificación"),
+                            keyboardType: TextInputType.phone,
+                            validator: (val) {
+                              if (!(val!.isEmpty) ||
+                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
+                                return "Ingrese un número de identificación válido";
+                              }
+                              return null;
+                            },
+                          ),
+                          decoration:
+                          TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
@@ -154,7 +185,14 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Dirección',
                                 'Ingrese la dirección de su finca/granja'),
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "Por favor ingrese su contraseña";
+                              }
+                              return null;
+                            },
                           ),
+
                           decoration:
                               TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
@@ -165,6 +203,13 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Ciudad',
                                 'Ingrese su ciudad/municipio de ubicación'),
+
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "Por favor ingrese su ciudad de ubicación";
+                              }
+                              return null;
+                            },
                           ),
                           decoration:
                               TemaPrincipal().inputBoxDecorationShaddow(),
@@ -177,10 +222,10 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                 "Correo electrónico", "Ingrese su email"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
-                              if (!(val!.isEmpty) &&
+                              if (!(val!.isEmpty) ||
                                   !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
                                       .hasMatch(val)) {
-                                return "Ingrese una dirección valida de correo";
+                                return "Ingrese una dirección válida de correo";
                               }
                               return null;
                             },
@@ -196,7 +241,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                 "Celular", "Ingrese su número de teléfono"),
                             keyboardType: TextInputType.phone,
                             validator: (val) {
-                              if (!(val!.isEmpty) &&
+                              if (!(val!.isEmpty) ||
                                   !RegExp(r"^(\d+)*$").hasMatch(val)) {
                                 return "Ingrese un número de teléfono válido";
                               }
@@ -215,7 +260,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                 "Contraseña*", "Ingrese su contraseña"),
                             validator: (val) {
                               if (val!.isEmpty) {
-                                return "Por favor ingrese su contraseña";
+                                return "Por favor ingrese los datos solicitados";
                               }
                               return null;
                             },
