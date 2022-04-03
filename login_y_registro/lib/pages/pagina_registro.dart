@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
@@ -41,8 +43,22 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
   final ctrReg = regController();
 
   final ImagePicker _picker = ImagePicker();
-  File? image;
   late Uint8List webImage;
+
+  Future<void> uploadImage() async {
+    String uploadurl = 'https://talleriot.000webhostapp.com/pruebaImagen.php';
+    Uri uri = Uri.parse(uploadurl);
+    String nombre = "uploads/image.jpg";
+    try {
+      String baseimage = base64Encode(webImage);
+      //convert file image to Base64 encoding
+      var response =
+          await http.post(uri, body: {'image': baseimage, 'name': nombre});
+    } catch (e) {
+      print(e);
+      //there is error during converting file image to base64 encoding.
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +136,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                   NexistImage = !NexistImage;
                                 }
                               });
+                              uploadImage();
                             }
                           },
                         ),
