@@ -29,10 +29,9 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
   TextEditingController nombrectrl = new TextEditingController();
   TextEditingController apellidoctrl = new TextEditingController();
   TextEditingController celularctrl = new TextEditingController();
-
+  TextEditingController cedulactrl = new TextEditingController();
   TextEditingController emailctrl = new TextEditingController();
   TextEditingController contrasenactrl = new TextEditingController();
-
   TextEditingController direccionctrl = new TextEditingController();
   TextEditingController ciudadctrl = new TextEditingController();
 
@@ -180,7 +179,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            controller: celularctrl,
+                            controller: cedulactrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 "Cédula", "Ingrese su número de identificación"),
                             keyboardType: TextInputType.phone,
@@ -277,7 +276,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                 "Contraseña*", "Ingrese su contraseña"),
                             validator: (val) {
                               if (val!.isEmpty) {
-                                return "Por favor ingrese los datos solicitados";
+                                return "Por favor ingrese una contraseña";
                               }
                               return null;
                             },
@@ -322,7 +321,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                           },
                           validator: (value) {
                             if (!checkboxValue) {
-                              return 'Debes aceptar los términos y condiciones';
+                              return 'Debes aceptar los términos y condiciones de nuestra aplicación';
                             } else {
                               return null;
                             }
