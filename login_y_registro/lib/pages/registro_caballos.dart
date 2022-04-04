@@ -28,7 +28,6 @@ class _RegistroCaballos extends State<RegistroCaballos> {
 
 
   //2. wigdet selector
-  Future<DateTime?> getFechaCabWidget() {
 
   Future <DateTime?> getFechaCabWidget() {
     return showDatePicker(
@@ -180,7 +179,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                         ),
                         SizedBox(height: 20.0),
 
-                        ////////////
+
                         Container(
                           decoration:
                               TemaPrincipal().buttonBoxDecoration(context),
