@@ -13,8 +13,6 @@ class userController {
   // metodos
 
   Future<int> descargar(String id) async {
-    int res = 0;
-
     String theUrl = 'https://talleriot.000webhostapp.com/getPersona.php';
     var data = {"Id": id};
 
@@ -25,6 +23,7 @@ class userController {
     if (responseBody.length != 0) {
       this.per = Persona.fromJson(responseBody[0]);
     }
-    return res;
+
+    return 1;
   }
 }

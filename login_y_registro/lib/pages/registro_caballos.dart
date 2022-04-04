@@ -26,11 +26,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
     });
   }
 
-
-  //2. wigdet selector
   Future<DateTime?> getFechaCabWidget() {
-
-  Future <DateTime?> getFechaCabWidget() {
     return showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -244,10 +240,4 @@ class _RegistroCaballos extends State<RegistroCaballos> {
       ),
     );
   }
-
-// Future<XFile?> filePicker() async {
-//  final XFile? imageFile =
-//     await _picker.pickImage(source: ImageSource.gallery);
-// return imageFile;
-//}
 }

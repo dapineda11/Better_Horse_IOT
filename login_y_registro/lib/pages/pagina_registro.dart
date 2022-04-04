@@ -12,8 +12,6 @@ import 'package:image_picker/image_picker.dart';
 
 import 'menu_y_usuario.dart';
 
-
-
 class PaginaRegistro extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -45,20 +43,6 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
   String imagen = "";
 
   String fecha = "1967-06-15";
-
-  Future<void> uploadImage() async {
-    String uploadurl = 'https://talleriot.000webhostapp.com/pruebaImagen.php';
-    Uri uri = Uri.parse(uploadurl);
-    String nombre = "uploads/image.jpg";
-    try {
-      String baseimage = base64Encode(webImage);
-
-      var response =
-          await http.post(uri, body: {'image': baseimage, 'name': nombre});
-    } catch (e) {
-      print(e);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

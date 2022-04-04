@@ -24,7 +24,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
   double _tamanoIconos = 24;
   double _tamanoLetra = 17;
 
-  final ctrU = userController();
+  var ctrU = userController();
 
   var ubicacionImagen = null;
 
