@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
 import 'package:login_y_registro/negocio/regController.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'menu_y_usuario.dart';
 
@@ -27,8 +26,11 @@ class _RegistroCaballos extends State<RegistroCaballos> {
     });
   }
 
+
   //2. wigdet selector
   Future<DateTime?> getFechaCabWidget() {
+
+  Future <DateTime?> getFechaCabWidget() {
     return showDatePicker(
       context: context,
       initialDate: DateTime.now(),

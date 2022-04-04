@@ -6,15 +6,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
-//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:login_y_registro/negocio/regController.dart';
-//import 'package:hexcolor/hexcolor.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'menu_y_usuario.dart';
 
-//flutter run -d chrome --web-port=8080 --web-hostname=127.0.0.1
+
 
 class PaginaRegistro extends StatefulWidget {
   @override
