@@ -19,27 +19,28 @@ class RegistroCaballos extends StatefulWidget {
 }
 
 class _RegistroCaballos extends State<RegistroCaballos> {
-
   var _currentselectedData;
   final _formKey = GlobalKey<FormState>();
   //1. call de selector
-  void callDatePicker() async{
-    var selectedDate= await getDatePickerWidget();
+  void callDatePicker() async {
+    var selectedDate = await getDatePickerWidget();
     setState(() {
-      _currentselectedData= selectedDate;
+      _currentselectedData = selectedDate;
     });
   }
+
   //2. wigdet selector
-  Future <DateTime?> getDatePickerWidget() {
-  return showDatePicker(
-      context: context, 
-      initialDate: DateTime.now(), 
+  Future<DateTime?> getDatePickerWidget() {
+    return showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
       firstDate: DateTime(1990),
       lastDate: DateTime(2022),
-        //builder: (context) => MenuYUsuario()),
-        //(Route<dynamic> route) => false);
-          );
+      //builder: (context) => MenuYUsuario()),
+      //(Route<dynamic> route) => false);
+    );
   }
+
   TextEditingController nombrectrl = new TextEditingController();
   TextEditingController emailctrl = new TextEditingController();
   TextEditingController direccionctrl = new TextEditingController();
@@ -65,7 +66,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Stack(
-            children: [
+          children: [
             Container(
               height: 150,
               child: HeaderWidget(150, false, Icons.person_add_alt_1_rounded),
@@ -83,47 +84,47 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                         GestureDetector(
                           child: NexistImage
                               ? Stack(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(100),
-                                  border: Border.all(
-                                      width: 5, color: Colors.white),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 20,
-                                      offset: const Offset(5, 5),
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        border: Border.all(
+                                            width: 5, color: Colors.white),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.black12,
+                                            blurRadius: 20,
+                                            offset: const Offset(5, 5),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Icon(
+                                        Icons.bedroom_baby_outlined,
+                                        color: Colors.grey.shade300,
+                                        size: 80.0,
+                                      ),
+                                    ),
+                                    Container(
+                                      padding:
+                                          EdgeInsets.fromLTRB(80, 80, 0, 0),
+                                      child: Icon(
+                                        Icons.add_circle,
+                                        color: Colors.grey.shade700,
+                                        size: 25.0,
+                                      ),
                                     ),
                                   ],
-                                ),
-                                child: Icon(
-                                  Icons.bedroom_baby_outlined,
-                                  color: Colors.grey.shade300,
-                                  size: 80.0,
-                                ),
-                              ),
-                              Container(
-                                padding:
-                                EdgeInsets.fromLTRB(80, 80, 0, 0),
-                                child: Icon(
-                                  Icons.add_circle,
-                                  color: Colors.grey.shade700,
-                                  size: 25.0,
-                                ),
-                              ),
-                            ],
-                          )
+                                )
                               : Container(
-                                padding: EdgeInsets.all(10),
-                                child: CircleAvatar(
-                              backgroundImage: MemoryImage(webImage),
-                              radius: 80,
-                            ),
-                          ),
+                                  padding: EdgeInsets.all(10),
+                                  child: CircleAvatar(
+                                    backgroundImage: MemoryImage(webImage),
+                                    radius: 80,
+                                  ),
+                                ),
                           onTap: () async {
                             XFile? temp = await _picker.pickImage(
                                 source: ImageSource.gallery);
@@ -145,7 +146,8 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                           child: TextFormField(
                             controller: nombrectrl,
                             decoration: TemaPrincipal().textInputDecoration(
-                                'Nombre del equino', 'Ingrese el nombre del caballo'),
+                                'Nombre del equino',
+                                'Ingrese el nombre del caballo'),
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return "Ingrese los datos solicitados";
@@ -154,7 +156,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                             },
                           ),
                           decoration:
-                          TemaPrincipal().inputBoxDecorationShaddow(),
+                              TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(
                           height: 30,
@@ -173,9 +175,8 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                               return null;
                             },
                           ),
-
                           decoration:
-                          TemaPrincipal().inputBoxDecorationShaddow(),
+                              TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
@@ -184,7 +185,6 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Edad del animal',
                                 'Ingrese la fecha de nacimiento del caballo'),
-
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return "Ingrese los datos solicitados";
@@ -193,41 +193,40 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                             },
                           ),
                           decoration:
-                          TemaPrincipal().inputBoxDecorationShaddow(),
+                              TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         ////////////
                         Container(
                           decoration:
-                          TemaPrincipal().buttonBoxDecoration(context),
-                          child: ElevatedButton(
-                              style: TemaPrincipal().buttonStyle(),
-                              child: Padding(
-                                padding:
-                                const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                                child: Text(
-                                  "DatePicker",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              onPressed: callDatePicker,
-    ),
-                        ),
-
-
-                              //
-                    Container(
-                          decoration:
-                          TemaPrincipal().buttonBoxDecoration(context),
+                              TemaPrincipal().buttonBoxDecoration(context),
                           child: ElevatedButton(
                             style: TemaPrincipal().buttonStyle(),
                             child: Padding(
                               padding:
-                              const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                  const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              child: Text(
+                                "DatePicker",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            onPressed: callDatePicker,
+                          ),
+                        ),
+
+                        //
+                        Container(
+                          decoration:
+                              TemaPrincipal().buttonBoxDecoration(context),
+                          child: ElevatedButton(
+                            style: TemaPrincipal().buttonStyle(),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
                                 "Registrar caballo".toUpperCase(),
                                 style: TextStyle(
@@ -238,36 +237,10 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                               ),
                             ),
                             onPressed: () async {
-                              if (_formKey.currentState!.validate()) {
-                                var res = await ctrReg.verificar(
-                                    emailctrl.text, contrasenactrl.text);
-
-                                if (res == 1) {
-                                  var id = "125";
-                                  ctrReg.insertarPersona(nombrectrl.text,
-                                      apellidoctrl.text, celularctrl.text, id);
-                                  ctrReg.insertarUsuario(
-                                      emailctrl.text, contrasenactrl.text, id);
-                                  ctrReg.insertarUbicacion(
-                                      ciudadctrl.text, direccionctrl.text, id);
-
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(
-                                          builder: (context) => MenuYUsuario()),
-                                          (Route<dynamic> route) => false);
-                                } else {
-                                  Fluttertoast.showToast(
-                                      msg:
-                                      "Los datos concuerdan con los de un caballo ya registrado",
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.CENTER,
-                                      webPosition: "center",
-                                      backgroundColor: Colors.red,
-                                      textColor: Colors.white,
-                                      fontSize: 50,
-                                      timeInSecForIosWeb: 2);
-                                }
-                              }
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                      builder: (context) => MenuYUsuario()),
+                                  (Route<dynamic> route) => false);
                             },
                           ),
                         ),
@@ -282,8 +255,6 @@ class _RegistroCaballos extends State<RegistroCaballos> {
       ),
     );
   }
-
-
 
 // Future<XFile?> filePicker() async {
 //  final XFile? imageFile =

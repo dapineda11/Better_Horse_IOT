@@ -9,22 +9,26 @@ class regController {
   // metodos
 
   Future<void> insertarUsuario(
-      String nombre, String contrasena, String id) async {
+      String correo, String contrasena, String id) async {
     String theUrl = 'https://talleriot.000webhostapp.com/postUsuario.php';
-    var data = {"Nombre": nombre, "Contraseña": contrasena, "Id": id};
+    var data = {"Correo": correo, "Contraseña": contrasena, "Id": id};
 
     Uri uri = Uri.parse(theUrl);
     var response = await http.post(uri, body: data);
   }
 
-  Future<void> insertarPersona(
-      String nombre, String apellido, String celular, String id) async {
+  Future<void> insertarPersona(String nombre, String apellido, String celular,
+      String id, String imagen, String imagenName, String fecha) async {
     String theUrl = 'https://talleriot.000webhostapp.com/postPersona.php';
+
     var data = {
       "Nombre": nombre,
       "Apellido": apellido,
       "Id": id,
-      "Celular": celular
+      "Celular": celular,
+      "Image": null,
+      "ImageName": null,
+      "Fecha": null,
     };
 
     Uri uri = Uri.parse(theUrl);
@@ -40,11 +44,11 @@ class regController {
     var response = await http.post(uri, body: data);
   }
 
-  Future<int> verificar(String nombre, String contrasena) async {
+  Future<int> verificar(String correo, String contrasena) async {
     int res = 0;
 
     String theUrl = 'https://talleriot.000webhostapp.com/getUsuario.php';
-    var data = {"Nombre": nombre};
+    var data = {"Correo": correo};
 
     Uri uri = Uri.parse(theUrl);
     var response = await http.post(uri, body: data);

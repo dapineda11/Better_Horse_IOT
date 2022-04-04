@@ -43,6 +43,10 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
 
   final ImagePicker _picker = ImagePicker();
   late Uint8List webImage;
+  String nombreImagen = "uploads/image.jpg";
+  String imagen = "";
+
+  String fecha = "";
 
   Future<void> uploadImage() async {
     String uploadurl = 'https://talleriot.000webhostapp.com/pruebaImagen.php';
@@ -50,12 +54,11 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
     String nombre = "uploads/image.jpg";
     try {
       String baseimage = base64Encode(webImage);
-      //convert file image to Base64 encoding
+
       var response =
           await http.post(uri, body: {'image': baseimage, 'name': nombre});
     } catch (e) {
       print(e);
-      //there is error during converting file image to base64 encoding.
     }
   }
 
@@ -135,7 +138,6 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                   NexistImage = !NexistImage;
                                 }
                               });
-                              uploadImage();
                             }
                           },
                         ),
@@ -174,17 +176,17 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                           ),
                           decoration:
                               TemaPrincipal().inputBoxDecorationShaddow(),
-
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
                             controller: cedulactrl,
                             decoration: TemaPrincipal().textInputDecoration(
-                                "Cédula", "Ingrese su número de identificación"),
+                                "Cédula",
+                                "Ingrese su número de identificación"),
                             keyboardType: TextInputType.phone,
                             validator: (val) {
-                              if (!(val!.isEmpty) ||
+                              if (!(val!.isEmpty) &&
                                   !RegExp(r"^(\d+)*$").hasMatch(val)) {
                                 return "Ingrese un número de identificación válido";
                               }
@@ -192,7 +194,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                             },
                           ),
                           decoration:
-                          TemaPrincipal().inputBoxDecorationShaddow(),
+                              TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
@@ -208,7 +210,6 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                               return null;
                             },
                           ),
-
                           decoration:
                               TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
@@ -219,7 +220,6 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Ciudad',
                                 'Ingrese su ciudad/municipio de ubicación'),
-
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return "Por favor ingrese su ciudad de ubicación";
@@ -238,7 +238,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                 "Correo electrónico", "Ingrese su email"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
-                              if (!(val!.isEmpty) ||
+                              if (!(val!.isEmpty) &&
                                   !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
                                       .hasMatch(val)) {
                                 return "Ingrese una dirección válida de correo";
@@ -257,7 +257,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                 "Celular", "Ingrese su número de teléfono"),
                             keyboardType: TextInputType.phone,
                             validator: (val) {
-                              if (!(val!.isEmpty) ||
+                              if (!(val!.isEmpty) &&
                                   !RegExp(r"^(\d+)*$").hasMatch(val)) {
                                 return "Ingrese un número de teléfono válido";
                               }
@@ -351,13 +351,18 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                     emailctrl.text, contrasenactrl.text);
 
                                 if (res == 1) {
-                                  var id = "125";
-                                  ctrReg.insertarPersona(nombrectrl.text,
-                                      apellidoctrl.text, celularctrl.text, id);
-                                  ctrReg.insertarUsuario(
-                                      emailctrl.text, contrasenactrl.text, id);
-                                  ctrReg.insertarUbicacion(
-                                      ciudadctrl.text, direccionctrl.text, id);
+                                  ctrReg.insertarPersona(
+                                      nombrectrl.text,
+                                      apellidoctrl.text,
+                                      "3008766301",
+                                      "1018499372",
+                                      nombreImagen,
+                                      imagen,
+                                      fecha);
+                                  ctrReg.insertarUsuario(emailctrl.text,
+                                      contrasenactrl.text, cedulactrl.text);
+                                  ctrReg.insertarUbicacion(ciudadctrl.text,
+                                      direccionctrl.text, cedulactrl.text);
 
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
