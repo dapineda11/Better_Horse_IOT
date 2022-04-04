@@ -26,6 +26,15 @@ class _RegistroCaballos extends State<RegistroCaballos> {
     var selectedDate = await getDatePickerWidget();
     setState(() {
       _currentselectedData = selectedDate;
+
+
+  var _fechaSeleccionadaCaballo;
+  final _formKey = GlobalKey<FormState>();
+
+  void callSelectorCab() async{
+    var fechaSeleccionadaCab= await getFechaCabWidget();
+    setState(() {
+      _fechaSeleccionadaCaballo= fechaSeleccionadaCab;
     });
   }
 
@@ -39,6 +48,16 @@ class _RegistroCaballos extends State<RegistroCaballos> {
       //builder: (context) => MenuYUsuario()),
       //(Route<dynamic> route) => false);
     );
+	
+  Future <DateTime?> getFechaCabWidget() {
+  return showDatePicker(
+      context: context, 
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(1990),
+      lastDate: DateTime(2040),
+        //builder: (context) => MenuYUsuario()),
+        //(Route<dynamic> route) => false);
+          );
   }
 
   TextEditingController nombrectrl = new TextEditingController();
@@ -179,6 +198,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                               TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
+
                         Container(
                           child: TextFormField(
                             controller: ciudadctrl,
@@ -196,7 +216,10 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                               TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
-                        ////////////
+
+
+
+                        
                         Container(
                           decoration:
                               TemaPrincipal().buttonBoxDecoration(context),
@@ -218,8 +241,30 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                           ),
                         ),
 
-                        //
+                      
                         Container(
+                              style: TemaPrincipal().buttonStyle(),
+                              child: Padding(
+                                padding:
+                                const EdgeInsets.fromLTRB(10 ,5, 10, 5),
+                                child: Text(
+                                  "Fecha de nacimiento",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              onPressed: callSelectorCab,
+                            ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+
+                              //
+                    Container(
                           decoration:
                               TemaPrincipal().buttonBoxDecoration(context),
                           child: ElevatedButton(
@@ -256,9 +301,5 @@ class _RegistroCaballos extends State<RegistroCaballos> {
     );
   }
 
-// Future<XFile?> filePicker() async {
-//  final XFile? imageFile =
-//     await _picker.pickImage(source: ImageSource.gallery);
-// return imageFile;
-//}
+
 }

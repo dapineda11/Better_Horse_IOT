@@ -24,7 +24,24 @@ class PaginaRegistro extends StatefulWidget {
 }
 
 class _PaginaRegistroState extends State<PaginaRegistro> {
+  var _fechaSeleccionadaPersona;
   final _formKey = GlobalKey<FormState>();
+  void callSelectorPersona() async{
+    var fechaSeleccionadaPersona= await getFechaPersonaWidget();
+    setState(() {
+      _fechaSeleccionadaPersona= fechaSeleccionadaPersona;
+    });
+  }
+  //2. wigdet selector
+  Future <DateTime?> getFechaPersonaWidget() {
+    return showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1930),
+      lastDate: DateTime(2040),
+
+    );
+  }
 
   TextEditingController nombrectrl = new TextEditingController();
   TextEditingController apellidoctrl = new TextEditingController();
@@ -197,6 +214,30 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                               TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
+
+                        Container(
+                          decoration:
+                          TemaPrincipal().buttonBoxDecoration(context),
+                          child: ElevatedButton(
+                            style: TemaPrincipal().buttonStyle(),
+                            child: Padding(
+                              padding:
+                              const EdgeInsets.fromLTRB(10 ,5, 10, 5),
+                              child: Text(
+                                "Fecha de nacimiento",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            onPressed: callSelectorPersona,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
                         Container(
                           child: TextFormField(
                             controller: direccionctrl,
