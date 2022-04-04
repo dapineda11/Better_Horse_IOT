@@ -77,6 +77,9 @@ flutter:
     - assets/images/equitacion.png
     - assets/images/libardo.png
     - assets/images/sebastian.png
+    - assets/images/sensores.png
+    - assets/images/desarrollo.png
+    - assets/images/tabla.PNG
     #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

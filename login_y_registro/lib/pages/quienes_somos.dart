@@ -62,6 +62,9 @@ class _QuienesSomosState extends State<QuienesSomos> {
                     // textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 20,),
+                  Container(
+                    child: Image.asset('assets/images/equitacion.png', scale: 0.1,),
+                  ),
                   Text('¿Por qué es importante estar alerta ante estas condiciones?',
                     style: TextStyle(
                         fontSize: 20,
@@ -79,6 +82,29 @@ class _QuienesSomosState extends State<QuienesSomos> {
                     ),
                   SizedBox(height: 10,),
 
+                  Text('Implicaciones graves ante la falta de supervisión y control de estas variables',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54
+                    ),
+
+                  ),
+                  SizedBox(height: 20,),
+                  Text('Alta humedad y temperatura puede favorecer el crecimiento de bacterias y hongos que pueden causar infecciones tanto en la piel como en las pezuñas, además pueden causar ulceras en el animal, complicaciones respiratorias, del sistema digestivo etc. Esto puede empeorar si se tiene en cuenta la gestión de deshechos de los caballos ya que este puede ser el canal de infección de distintos tipos de enfermedades. Un estudio en causas de muerte de caballos pura sangre encontró que el 39% de las muertes totales eran atribuidas a enfermedades infecciosas. A continuación, se presenta una tabla de enfermedades relacionadas con condiciones ambientales (humedad y temperatura) y/o los desechos del animal. Como se puede observar la tabla varía desde enfermedades con tasa de muertes baja hasta enfermedades graves con tasas de mortalidad cercanas a el 100 %. Sumado a ello, cabe recalcar otro aspecto fundamental para la preservación de la salud de los equinos, corresponde a la calidad del aire que estos respiran. Debido a que gases nocivos, como el caso del metano (CH4), pueden tener incidencias en su propia salud además de ser un fuerte indicativo de una dieta que contenga ingredientes de baja digestibilidad (alto contenido en celulosa, como por ejemplo heno), que implica mayor emisión de metano entérico. ',
+                      style: TextStyle(
+                      color: Colors.black38,
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Container(
+                    alignment: Alignment.center,
+                    child: Image.asset('assets/images/tabla.PNG',
+                      width: 400.0,
+                      height: 400.0,),
+                  ),
+
                   Text('Arquitectura en alto nivel: Better Horse',
                     style: TextStyle(
                         fontSize: 20,
@@ -87,11 +113,57 @@ class _QuienesSomosState extends State<QuienesSomos> {
                     ),
                   ),
                   SizedBox(height: 10,),
-                  Container(
-                    height: _headerHeight,
-                    child:
-                    new Image.asset('assets/andres.png', scale: 1,),
 
+
+                  Container(
+                    alignment: Alignment.center,
+                    child: Image.asset('assets/images/arqui.png',
+                      width: 700.0,
+                      height: 700.0,),
+                  ),
+                  Text('En el anterior diagrama se presenta la implementación del sistema, donde se observa el establo o box de los caballos. Lugar en el que es situado, un sensor de temperatura, humedad y gas, en adición a una galga extensiométrica que realizará las estimaciones de masa del alimento equino. Los sensores mencionados, estarán conectados al procesador Raspberry pi que será conectado a una red wifi, de tal manera que tengamos la facilite el enlace a una aplicación y página web donde el usuario podrá visualizar un apartado de condiciones ambientales, y otro de cantidades y proyecciones de gasto alimentario.',
+                    style: TextStyle(
+                      color: Colors.black38,
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Text('Nuestro equipo de trabajo',
+                    style: TextStyle(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Text('- Equipo de desarrollo web y de aplicación móvil (Frontend y Backend respectivamente):',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Container(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      'assets/images/desarrollo.png',
+                      width: 680.0,
+                      height: 680.0,),
+                  ),
+                  Text('- Equipo de sensores y comunicadores:',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Container(
+                    alignment: Alignment.center,
+                    child: Image.asset('assets/images/sensores.png',
+                      width: 680.0,
+                      height: 680.0,),
                   ),
                 ],
                   ),
