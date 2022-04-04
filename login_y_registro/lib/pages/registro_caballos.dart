@@ -7,7 +7,6 @@ import 'package:login_y_registro/pages/widgets/header_widget.dart';
 import 'package:login_y_registro/negocio/regController.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'menu_y_usuario.dart';
 
 //flutter run -d chrome --web-port=8080 --web-hostname=127.0.0.1
@@ -20,17 +19,34 @@ class RegistroCaballos extends StatefulWidget {
 }
 
 class _RegistroCaballos extends State<RegistroCaballos> {
+
+  var _currentselectedData;
   final _formKey = GlobalKey<FormState>();
-
+  //1. call de selector
+  void callDatePicker() async{
+    var selectedDate= await getDatePickerWidget();
+    setState(() {
+      _currentselectedData= selectedDate;
+    });
+  }
+  //2. wigdet selector
+  Future <DateTime?> getDatePickerWidget() {
+  return showDatePicker(
+      context: context, 
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(1990),
+      lastDate: DateTime(2022),
+        //builder: (context) => MenuYUsuario()),
+        //(Route<dynamic> route) => false);
+          );
+  }
   TextEditingController nombrectrl = new TextEditingController();
-  TextEditingController apellidoctrl = new TextEditingController();
-  TextEditingController celularctrl = new TextEditingController();
-
   TextEditingController emailctrl = new TextEditingController();
-  TextEditingController contrasenactrl = new TextEditingController();
-
   TextEditingController direccionctrl = new TextEditingController();
+  TextEditingController contrasenactrl = new TextEditingController();
+  TextEditingController apellidoctrl = new TextEditingController();
   TextEditingController ciudadctrl = new TextEditingController();
+  TextEditingController celularctrl = new TextEditingController();
 
   bool checkedValue = false;
   bool checkboxValue = false;
@@ -44,11 +60,12 @@ class _RegistroCaballos extends State<RegistroCaballos> {
 
   @override
   Widget build(BuildContext context) {
+    //boton selector
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Stack(
-          children: [
+            children: [
             Container(
               height: 150,
               child: HeaderWidget(150, false, Icons.person_add_alt_1_rounded),
@@ -84,7 +101,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                                   ],
                                 ),
                                 child: Icon(
-                                  Icons.person,
+                                  Icons.bedroom_baby_outlined,
                                   color: Colors.grey.shade300,
                                   size: 80.0,
                                 ),
@@ -101,8 +118,8 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                             ],
                           )
                               : Container(
-                            padding: EdgeInsets.all(10),
-                            child: CircleAvatar(
+                                padding: EdgeInsets.all(10),
+                                child: CircleAvatar(
                               backgroundImage: MemoryImage(webImage),
                               radius: 80,
                             ),
@@ -179,6 +196,30 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                           TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
+                        ////////////
+                        Container(
+                          decoration:
+                          TemaPrincipal().buttonBoxDecoration(context),
+                          child: ElevatedButton(
+                              style: TemaPrincipal().buttonStyle(),
+                              child: Padding(
+                                padding:
+                                const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                child: Text(
+                                  "DatePicker",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              onPressed: callDatePicker,
+    ),
+                        ),
+
+
+                              //
                     Container(
                           decoration:
                           TemaPrincipal().buttonBoxDecoration(context),
@@ -241,6 +282,8 @@ class _RegistroCaballos extends State<RegistroCaballos> {
       ),
     );
   }
+
+
 
 // Future<XFile?> filePicker() async {
 //  final XFile? imageFile =
