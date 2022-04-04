@@ -8,11 +8,11 @@ class logController {
   // Constructores
   // metodos
 
-  Future<int> verificar(String nombre, String contrasena) async {
+  Future<int> verificar(String correo, String contrasena) async {
     int res = 0;
 
     String theUrl = 'https://talleriot.000webhostapp.com/getUsuario.php';
-    var data = {"Nombre": nombre};
+    var data = {"Correo": correo};
 
     Uri uri = Uri.parse(theUrl);
     var response = await http.post(uri, body: data);

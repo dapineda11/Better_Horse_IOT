@@ -1,11 +1,12 @@
 
+
 <?php 
 
 require('connection.php');
 
-$user=$_POST["Nombre"];
+$user=$_POST["Correo"];
 
-$query="SELECT * FROM Usuario WHERE Nombre LIKE '$user'";
+$query="SELECT * FROM Usuario WHERE Correo LIKE '$user'";
 $consulta =$Connection -> prepare($query);
 $consulta->execute();
 $resultado=array();
@@ -15,7 +16,7 @@ while($res =$consulta -> fetch()){
     array_push(
         $resultado, array(
             "Id"=>$res['Id'],
-            "Nombre"=>$res['Nombre'],
+            "Correo"=>$res['Correo'],
             "Contraseña"=>$res['Contraseña']
         )
     );

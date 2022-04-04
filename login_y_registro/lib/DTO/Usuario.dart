@@ -1,18 +1,18 @@
 class Usuario {
   // Propiedades
-  String Nombre = "";
+  String Correo = "";
   String Contrasena = "";
   int Id = 0;
   // Constructores
 
-  Usuario(String Nombre, String Contrasena, int Id) {
-    this.Nombre = Nombre;
+  Usuario(String Correo, String Contrasena, int Id) {
+    this.Correo = Correo;
     this.Contrasena = Contrasena;
     this.Id = Id;
   }
 
   Usuario.fromJson(Map<String, dynamic> mapa) {
-    this.Nombre = mapa['Nombre'];
+    this.Correo = mapa['Correo'];
     this.Contrasena = mapa['Contraseña'];
     this.Id = int.parse(mapa['Id']);
   }
