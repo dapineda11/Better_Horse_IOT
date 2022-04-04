@@ -45,7 +45,7 @@ class _PaginaInicioState extends State<PaginaInicio> {
               child: Container(
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                   margin: EdgeInsets.fromLTRB(
-                      20, 10, 20, 10), // This will be the login form
+                      20, 10, 20, 10),
                   child: Column(
                     children: [
                       Text(
