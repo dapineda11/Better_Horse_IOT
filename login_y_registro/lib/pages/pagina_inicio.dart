@@ -44,8 +44,7 @@ class _PaginaInicioState extends State<PaginaInicio> {
             SafeArea(
               child: Container(
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  margin: EdgeInsets.fromLTRB(
-                      20, 10, 20, 10),
+                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
                   child: Column(
                     children: [
                       Text(
@@ -125,12 +124,13 @@ class _PaginaInicioState extends State<PaginaInicio> {
                                     var res = await ctrLogin.verificar(
                                         emailctrl.text, contrasenactrl.text);
 
-                                    if (res == 1) {
+                                    if (res != -1) {
                                       Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  MenuYUsuario()));
+                                                  MenuYUsuario(
+                                                      id: res.toString())));
                                     } else {
                                       Fluttertoast.showToast(
                                           msg: "Imposible iniciar sesión",

@@ -20,13 +20,13 @@ $query="INSERT INTO Persona (`Id`, `Nombre`, `Apellido`, `Celular`, `Image`, `fe
 $consulta =$Connection -> prepare($query);
 $consulta->execute();
 
-if(isset($_POST["Image"])){
+
 
 $base64_string = $_POST["Image"];
 $filehandler = fopen($path, 'wb' ); 
 fwrite($filehandler, base64_decode($base64_string));
 fclose($filehandler); 
-}
+
 
 
 

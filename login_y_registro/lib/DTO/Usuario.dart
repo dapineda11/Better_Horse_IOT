@@ -21,9 +21,9 @@ class Usuario {
   // metodos
 
   int validarIdentidad(String contrasena) {
-    int res = 0;
+    int res = -1;
     if (identical(Contrasena, contrasena)) {
-      res = 1;
+      res = this.Id;
     }
     return res;
   }

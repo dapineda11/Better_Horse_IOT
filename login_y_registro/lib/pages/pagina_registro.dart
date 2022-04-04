@@ -24,24 +24,7 @@ class PaginaRegistro extends StatefulWidget {
 }
 
 class _PaginaRegistroState extends State<PaginaRegistro> {
-  var _fechaSeleccionadaPersona;
   final _formKey = GlobalKey<FormState>();
-  void callSelectorPersona() async{
-    var fechaSeleccionadaPersona= await getFechaPersonaWidget();
-    setState(() {
-      _fechaSeleccionadaPersona= fechaSeleccionadaPersona;
-    });
-  }
-  //2. wigdet selector
-  Future <DateTime?> getFechaPersonaWidget() {
-    return showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1930),
-      lastDate: DateTime(2040),
-
-    );
-  }
 
   TextEditingController nombrectrl = new TextEditingController();
   TextEditingController apellidoctrl = new TextEditingController();
@@ -60,10 +43,10 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
 
   final ImagePicker _picker = ImagePicker();
   late Uint8List webImage;
-  String nombreImagen = "uploads/image.jpg";
+  String nombreImagen = "";
   String imagen = "";
 
-  String fecha = "";
+  String fecha = "1967-06-15";
 
   Future<void> uploadImage() async {
     String uploadurl = 'https://talleriot.000webhostapp.com/pruebaImagen.php';
@@ -150,7 +133,9 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                             if (temp != null) {
                               var f = await temp.readAsBytes();
                               setState(() {
-                                webImage = f;
+                                this.webImage = f;
+                                this.imagen = base64Encode(webImage);
+                                this.nombreImagen = temp.name;
                                 if (NexistImage) {
                                   NexistImage = !NexistImage;
                                 }
@@ -214,30 +199,6 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                               TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
-
-                        Container(
-                          decoration:
-                          TemaPrincipal().buttonBoxDecoration(context),
-                          child: ElevatedButton(
-                            style: TemaPrincipal().buttonStyle(),
-                            child: Padding(
-                              padding:
-                              const EdgeInsets.fromLTRB(10 ,5, 10, 5),
-                              child: Text(
-                                "Fecha de nacimiento",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            onPressed: callSelectorPersona,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
                         Container(
                           child: TextFormField(
                             controller: direccionctrl,
@@ -388,26 +349,27 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                             ),
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
-                                var res = await ctrReg.verificar(
-                                    emailctrl.text, contrasenactrl.text);
+                                var res =
+                                    await ctrReg.verificar(emailctrl.text);
 
                                 if (res == 1) {
                                   ctrReg.insertarPersona(
                                       nombrectrl.text,
                                       apellidoctrl.text,
-                                      "3008766301",
-                                      "1018499372",
-                                      nombreImagen,
+                                      celularctrl.text,
+                                      cedulactrl.text,
                                       imagen,
-                                      fecha);
-                                  ctrReg.insertarUsuario(emailctrl.text,
-                                      contrasenactrl.text, cedulactrl.text);
-                                  ctrReg.insertarUbicacion(ciudadctrl.text,
-                                      direccionctrl.text, cedulactrl.text);
+                                      nombreImagen,
+                                      fecha,
+                                      emailctrl.text,
+                                      contrasenactrl.text,
+                                      ciudadctrl.text,
+                                      direccionctrl.text);
 
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
-                                          builder: (context) => MenuYUsuario()),
+                                          builder: (context) => MenuYUsuario(
+                                              id: cedulactrl.text)),
                                       (Route<dynamic> route) => false);
                                 } else {
                                   Fluttertoast.showToast(
@@ -436,10 +398,4 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
       ),
     );
   }
-
-  // Future<XFile?> filePicker() async {
-  //  final XFile? imageFile =
-  //     await _picker.pickImage(source: ImageSource.gallery);
-  // return imageFile;
-  //}
 }

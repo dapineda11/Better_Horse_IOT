@@ -9,7 +9,7 @@ class logController {
   // metodos
 
   Future<int> verificar(String correo, String contrasena) async {
-    int res = 0;
+    int res = -1;
 
     String theUrl = 'https://talleriot.000webhostapp.com/getUsuario.php';
     var data = {"Correo": correo};

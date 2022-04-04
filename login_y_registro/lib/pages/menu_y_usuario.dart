@@ -8,8 +8,12 @@ import 'package:login_y_registro/pages/widgets/header_widget.dart';
 import 'recuperar_contrasena.dart';
 import 'quienes_somos.dart';
 import 'pagina_registro.dart';
+import 'package:login_y_registro/negocio/userController.dart';
 
 class MenuYUsuario extends StatefulWidget {
+  final String id;
+  MenuYUsuario({required this.id});
+
   @override
   State<StatefulWidget> createState() {
     return _MenuYUsuarioState();
@@ -19,8 +23,10 @@ class MenuYUsuario extends StatefulWidget {
 class _MenuYUsuarioState extends State<MenuYUsuario> {
   double _tamanoIconos = 24;
   double _tamanoLetra = 17;
-  String ubicacionImagen =
-      "https://talleriot.000webhostapp.com/uploads/image.jpg";
+
+  final ctrU = userController();
+
+  var ubicacionImagen = null;
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +143,10 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                               PantallaAnimacion(title: "Temperatura")));
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
               ListTile(
                 leading: Icon(Icons.air,
                     size: _tamanoIconos, color: Theme.of(context).accentColor),
@@ -228,11 +237,13 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                 height: 1,
               ),
               ListTile(
-                leading: Icon(Icons.add_box,
+                leading: Icon(
+                  Icons.add_box,
                   size: _tamanoIconos,
                   color: Theme.of(context).accentColor,
                 ),
-                title: Text('Agregar un caballo al registro',
+                title: Text(
+                  'Agregar un caballo al registro',
                   style: TextStyle(
                       fontSize: _tamanoLetra,
                       color: Theme.of(context).accentColor),
@@ -240,7 +251,8 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegistroCaballos()), );
+                    MaterialPageRoute(builder: (context) => RegistroCaballos()),
+                  );
                 },
               ),
               Divider(
@@ -322,7 +334,8 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                     height: 20,
                   ),
                   Text(
-                    'Usuario premium - Better Horse',
+                    //'Usuario premium - Better Horse',
+                    widget.id,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(

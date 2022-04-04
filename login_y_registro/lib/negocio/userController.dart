@@ -1,26 +1,29 @@
+import 'dart:html';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../DTO/Usuario.dart';
+import '../DTO/Persona.dart';
 
 class userController {
   // Propiedades
+  var per = null;
+
   // Get y sets
   // Constructores
   // metodos
 
-  Future<int> verificar(String nombre, String contrasena) async {
+  Future<int> descargar(String id) async {
     int res = 0;
 
-    String theUrl = 'https://talleriot.000webhostapp.com/getUsuario.php';
-    var data = {"Nombre": nombre};
+    String theUrl = 'https://talleriot.000webhostapp.com/getPersona.php';
+    var data = {"Id": id};
 
     Uri uri = Uri.parse(theUrl);
     var response = await http.post(uri, body: data);
     var responseBody = json.decode(response.body);
 
     if (responseBody.length != 0) {
-      var user = Usuario.fromJson(responseBody[0]);
-      res = user.validarIdentidad(contrasena);
+      this.per = Persona.fromJson(responseBody[0]);
     }
     return res;
   }
