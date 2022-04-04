@@ -9,10 +9,50 @@ class userController {
   var per = null;
 
   // Get y sets
+  String getNombre() {
+    String res = "invalido";
+
+    if (per != null) {
+      res = per.Nombre;
+    }
+
+    return res;
+  }
+
+  String getApellido() {
+    String res = "invalido";
+
+    if (per != null) {
+      res = per.Apellido;
+    }
+
+    return res;
+  }
+
+  String getImagen() {
+    String res = "invalido";
+
+    if (per != null) {
+      res = per.Image;
+    }
+    return res;
+  }
+
+  String getId() {
+    String res = "invalido";
+
+    if (per != null) {
+      res = per.Id;
+    }
+
+    return res;
+  }
+
   // Constructores
+  userController() {}
   // metodos
 
-  Future<int> descargar(String id) async {
+  void descargar(String id) async {
     String theUrl = 'https://talleriot.000webhostapp.com/getPersona.php';
     var data = {"Id": id};
 
@@ -20,10 +60,10 @@ class userController {
     var response = await http.post(uri, body: data);
     var responseBody = json.decode(response.body);
 
-    if (responseBody.length != 0) {
-      this.per = Persona.fromJson(responseBody[0]);
-    }
+    print(responseBody);
 
-    return 1;
+    if (responseBody.length != 0) {
+      per = await Persona.fromJson(responseBody[0]);
+    }
   }
 }

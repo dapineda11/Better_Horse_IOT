@@ -24,9 +24,22 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
   double _tamanoIconos = 24;
   double _tamanoLetra = 17;
 
-  var ctrU = userController();
-
   var ubicacionImagen = null;
+  var nombre = null;
+  var apellido = null;
+
+  initState() {
+    final ctrU = userController();
+    ctrU.descargar(widget.id);
+
+    Future.delayed(const Duration(milliseconds: 500), () {
+      setState(() {
+        ubicacionImagen = ctrU.getImagen();
+        nombre = ctrU.getNombre();
+        apellido = ctrU.getApellido();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -319,25 +332,41 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                             color: Colors.grey.shade300,
                           )
                         : CircleAvatar(
-                            backgroundImage: NetworkImage(ubicacionImagen),
+                            backgroundImage: NetworkImage(
+                                "https://talleriot.000webhostapp.com/uploads/" +
+                                    ubicacionImagen),
                             radius: 80,
                           ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    'Nombre_Usuario',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
+                  (nombre == null
+                      ? Text(
+                          'Nombre_Usuario',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          nombre,
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        )),
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    //'Usuario premium - Better Horse',
-                    widget.id,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
+                  (apellido == null
+                      ? Text(
+                          //'Usuario premium - Better Horse',
+                          widget.id,
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          apellido,
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        )),
                   SizedBox(
                     height: 10,
                   ),

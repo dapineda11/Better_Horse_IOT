@@ -22,20 +22,20 @@ class PaginaRegistro extends StatefulWidget {
 class _PaginaRegistroState extends State<PaginaRegistro> {
   var _fechaSeleccionadaPersona;
   final _formKey = GlobalKey<FormState>();
-  void callSelectorPersona() async{
-    var fechaSeleccionadaPersona= await getFechaPersonaWidget();
+  void callSelectorPersona() async {
+    var fechaSeleccionadaPersona = await getFechaPersonaWidget();
     setState(() {
-      _fechaSeleccionadaPersona= fechaSeleccionadaPersona;
+      _fechaSeleccionadaPersona = fechaSeleccionadaPersona;
     });
   }
+
   //2. wigdet selector
-  Future <DateTime?> getFechaPersonaWidget() {
+  Future<DateTime?> getFechaPersonaWidget() {
     return showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(1930),
       lastDate: DateTime(2040),
-
     );
   }
 
@@ -198,10 +198,9 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                               TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
-
                         Container(
                           decoration:
-                          TemaPrincipal().buttonBoxDecoration(context),
+                              TemaPrincipal().buttonBoxDecoration(context),
                           child: ElevatedButton(
                             style: TemaPrincipal().buttonStyle(),
                             child: Padding(
@@ -221,7 +220,6 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                         SizedBox(
                           height: 30,
                         ),
-
                         Container(
                           child: TextFormField(
                             controller: direccionctrl,

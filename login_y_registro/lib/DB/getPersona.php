@@ -16,7 +16,7 @@ while($res =$consulta -> fetch()){
         $resultado, array(
             "Id"=>$res['id'],
             "Nombre"=>$res['Nombre'],
-            "Apelido"=>$res['Apellido'],
+            "Apellido"=>$res['Apellido'],
             "Celular"=>$res['Celular'],
             "Image"=>$res['Image'],
             "Fecha"=>$res['fechaNacimiento']
