@@ -20,22 +20,22 @@ class RegistroCaballos extends StatefulWidget {
 
 class _RegistroCaballos extends State<RegistroCaballos> {
 
-  var _currentselectedData;
+  var _fechaSeleccionadaCaballo;
   final _formKey = GlobalKey<FormState>();
-  //1. call de selector
-  void callDatePicker() async{
-    var selectedDate= await getDatePickerWidget();
+
+  void callSelectorCab() async{
+    var fechaSeleccionadaCab= await getFechaCabWidget();
     setState(() {
-      _currentselectedData= selectedDate;
+      _fechaSeleccionadaCaballo= fechaSeleccionadaCab;
     });
   }
   //2. wigdet selector
-  Future <DateTime?> getDatePickerWidget() {
+  Future <DateTime?> getFechaCabWidget() {
   return showDatePicker(
       context: context, 
       initialDate: DateTime.now(), 
       firstDate: DateTime(1990),
-      lastDate: DateTime(2022),
+      lastDate: DateTime(2040),
         //builder: (context) => MenuYUsuario()),
         //(Route<dynamic> route) => false);
           );
@@ -178,24 +178,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                           TemaPrincipal().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
-                        Container(
-                          child: TextFormField(
-                            controller: ciudadctrl,
-                            decoration: TemaPrincipal().textInputDecoration(
-                                'Edad del animal',
-                                'Ingrese la fecha de nacimiento del caballo'),
 
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return "Ingrese los datos solicitados";
-                              }
-                              return null;
-                            },
-                          ),
-                          decoration:
-                          TemaPrincipal().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 20.0),
                         ////////////
                         Container(
                           decoration:
@@ -204,20 +187,22 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                               style: TemaPrincipal().buttonStyle(),
                               child: Padding(
                                 padding:
-                                const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                const EdgeInsets.fromLTRB(10 ,5, 10, 5),
                                 child: Text(
-                                  "DatePicker",
+                                  "Fecha de nacimiento",
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   ),
                                 ),
                               ),
-                              onPressed: callDatePicker,
-    ),
+                              onPressed: callSelectorCab,
+                            ),
                         ),
-
+                        SizedBox(
+                          height: 30,
+                        ),
 
                               //
                     Container(
