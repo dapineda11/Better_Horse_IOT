@@ -26,6 +26,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
     });
   }
 
+
   Future<DateTime?> getFechaCabWidget() {
     return showDatePicker(
       context: context,
@@ -176,7 +177,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                         ),
                         SizedBox(height: 20.0),
 
-                        ////////////
+
                         Container(
                           decoration:
                               TemaPrincipal().buttonBoxDecoration(context),
