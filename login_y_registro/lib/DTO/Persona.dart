@@ -4,8 +4,8 @@ class Persona {
   String Nombre = "";
   String Apellido = "";
   String Celular = "";
-  String Image = "";
-  String Fecha = "";
+  var Image = null;
+  var Fecha = null;
 
   // Constructores
 
@@ -24,8 +24,13 @@ class Persona {
     this.Nombre = mapa['Nombre'];
     this.Apellido = mapa['Apellido'];
     this.Celular = mapa['Celular'];
-    this.Image = mapa['Image'];
-    this.Fecha = mapa['Fecha'];
+    if (mapa['Image'] != null) {
+      this.Image = mapa['Image'];
+    }
+
+    if (mapa['Fecha'] != null) {
+      this.Fecha = mapa['Fecha'];
+    }
   }
 
   // Get y sets

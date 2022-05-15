@@ -12,7 +12,8 @@ import 'package:login_y_registro/negocio/userController.dart';
 
 class MenuYUsuario extends StatefulWidget {
   final String id;
-  MenuYUsuario({required this.id});
+  final user;
+  MenuYUsuario({required this.id, this.user});
 
   @override
   State<StatefulWidget> createState() {
@@ -24,19 +25,26 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
   double _tamanoIconos = 24;
   double _tamanoLetra = 17;
 
-  var ubicacionImagen = null;
+  String ubicacionImagen = "invalido";
   var nombre = null;
   var apellido = null;
+  var correo = null;
+  var tel = null;
+  var place = null;
 
   initState() {
     final ctrU = userController();
     ctrU.descargar(widget.id);
+    ctrU.getUbicacion(widget.id);
 
-    Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 300), () {
       setState(() {
         ubicacionImagen = ctrU.getImagen();
         nombre = ctrU.getNombre();
         apellido = ctrU.getApellido();
+        correo = widget.user.Correo;
+        tel = ctrU.getTelefono();
+        place = (ctrU.getDireccion() + " : " + ctrU.getCiudad());
       });
     });
   }
@@ -325,7 +333,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                         ),
                       ],
                     ),
-                    child: ubicacionImagen == null
+                    child: ubicacionImagen == "invalido"
                         ? Icon(
                             Icons.person,
                             size: 80,
@@ -400,22 +408,39 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                                       color: Colors.grey,
                                       tiles: [
                                         ListTile(
-                                          contentPadding: EdgeInsets.symmetric(
-                                              horizontal: 12, vertical: 4),
-                                          leading: Icon(Icons.my_location),
-                                          title: Text("Ubicación"),
-                                          subtitle: Text("Colombia"),
-                                        ),
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                                    horizontal: 12,
+                                                    vertical: 4),
+                                            leading: Icon(Icons.my_location),
+                                            title: Text("Ubicación"),
+                                            subtitle: (place == null
+                                                ? Text(
+                                                    'Colombia',
+                                                  )
+                                                : Text(
+                                                    place,
+                                                  ))),
                                         ListTile(
-                                          leading: Icon(Icons.email),
-                                          title: Text("Email"),
-                                          subtitle: Text("tucorreo_@gmail.com"),
-                                        ),
+                                            leading: Icon(Icons.email),
+                                            title: Text("Email"),
+                                            subtitle: (correo == null
+                                                ? Text(
+                                                    'tucorreo_@gmail.com',
+                                                  )
+                                                : Text(
+                                                    correo,
+                                                  ))),
                                         ListTile(
-                                          leading: Icon(Icons.phone),
-                                          title: Text("Phone"),
-                                          subtitle: Text("321-480-3788"),
-                                        ),
+                                            leading: Icon(Icons.phone),
+                                            title: Text("Phone"),
+                                            subtitle: (tel == null
+                                                ? Text(
+                                                    '321-480-3788',
+                                                  )
+                                                : Text(
+                                                    tel,
+                                                  ))),
                                         ListTile(
                                           leading: Icon(Icons.person),
                                           title: Text("Mi cuenta"),

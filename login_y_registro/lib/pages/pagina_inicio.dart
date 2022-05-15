@@ -130,7 +130,9 @@ class _PaginaInicioState extends State<PaginaInicio> {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   MenuYUsuario(
-                                                      id: res.toString())));
+                                                      id: res.toString(),
+                                                      user: ctrLogin
+                                                          .getUsuario())));
                                     } else {
                                       Fluttertoast.showToast(
                                           msg: "Imposible iniciar sesión",

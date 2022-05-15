@@ -1,10 +1,19 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../DTO/Usuario.dart';
+import '../DTO/Persona.dart';
 
 class logController {
   // Propiedades
+
+  var user = null;
+
   // Get y sets
+
+  Usuario getUsuario() {
+    return user;
+  }
+
   // Constructores
   // metodos
 
@@ -19,7 +28,7 @@ class logController {
     var responseBody = json.decode(response.body);
 
     if (responseBody.length != 0) {
-      var user = Usuario.fromJson(responseBody[0]);
+      user = Usuario.fromJson(responseBody[0]);
       res = user.validarIdentidad(contrasena);
     }
     return res;
