@@ -37,7 +37,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
     ctrU.descargar(widget.id);
     ctrU.getUbicacion(widget.id);
 
-    Future.delayed(const Duration(milliseconds: 300), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
         ubicacionImagen = ctrU.getImagen();
         nombre = ctrU.getNombre();
