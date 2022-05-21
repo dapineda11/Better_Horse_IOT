@@ -6,8 +6,6 @@
 * Andrés Gómez
 * Libardo Melo
 * */
-
-
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'pages/pantalla_animacion.dart';
