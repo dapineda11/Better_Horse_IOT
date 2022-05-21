@@ -10,6 +10,8 @@ import 'quienes_somos.dart';
 import 'pagina_registro.dart';
 import 'package:login_y_registro/negocio/userController.dart';
 
+//mis nalgas
+
 class MenuYUsuario extends StatefulWidget {
   final String id;
   final user;
