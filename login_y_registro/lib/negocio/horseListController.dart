@@ -5,7 +5,7 @@ import 'dart:convert';
 import '../DTO/Caballo.dart';
 import '../DTO/Ubicacion.dart';
 
-class horseController {
+class horseListController {
   // Propiedades
   List<Caballo> cab=[];
 
@@ -30,7 +30,7 @@ class horseController {
   String getImagen(pos) {
     String res = "invalido";
     if (cab!= null) {
-      if (cab[pos] != null) {
+      if (cab[pos].Image != null) {
         res = cab[pos].Image;
       }
     }
@@ -55,7 +55,7 @@ class horseController {
 
 
   // Constructores
-  horseController() {}
+  horseListController() {}
   // metodos
 
   void getCaballos(String id) async {
@@ -72,8 +72,6 @@ class horseController {
         cab.add( await Caballo.fromJson(i));
 
       }
-
-      print(getActividad(5));
 
     }
   }
