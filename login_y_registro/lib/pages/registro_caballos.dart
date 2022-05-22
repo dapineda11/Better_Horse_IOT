@@ -193,7 +193,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                               child: Text(
                                 "Fecha de nacimiento",
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -243,7 +243,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                         SizedBox(
                           height: 30,
                         ),
-                        
+
                         Container(
                           decoration:
                               TemaPrincipal().buttonBoxDecoration(context),
