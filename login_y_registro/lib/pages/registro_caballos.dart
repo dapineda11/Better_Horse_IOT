@@ -222,8 +222,6 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                                 ),
                                 ),
 
-
-
                                Container(
                                 width: 150,
                                 padding: EdgeInsets.symmetric(horizontal: 14, vertical: 2),
