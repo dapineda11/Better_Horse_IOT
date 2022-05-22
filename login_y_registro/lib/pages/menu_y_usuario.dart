@@ -10,7 +10,6 @@ import 'quienes_somos.dart';
 import 'pagina_registro.dart';
 import 'package:login_y_registro/negocio/userController.dart';
 
-//mis nalgas
 
 class MenuYUsuario extends StatefulWidget {
   final String id;
@@ -278,6 +277,33 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                   );
                 },
               ),
+
+
+              //bedroom_baby_outlined
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.agriculture,
+                  size: _tamanoIconos,
+                  color: Theme.of(context).accentColor,
+                ),
+                title: Text(
+                  'Mis caballos',
+                  style: TextStyle(
+                      fontSize: _tamanoLetra,
+                      color: Theme.of(context).accentColor),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegistroCaballos()),
+                  );
+                },
+              ),
+
               Divider(
                 color: Theme.of(context).primaryColor,
                 height: 1,

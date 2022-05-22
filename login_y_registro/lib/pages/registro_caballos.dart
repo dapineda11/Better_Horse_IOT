@@ -18,6 +18,11 @@ class RegistroCaballos extends StatefulWidget {
 class _RegistroCaballos extends State<RegistroCaballos> {
   var _fechaSeleccionadaCaballo;
   final _formKey = GlobalKey<FormState>();
+  List<String> _EstadoFisico = ['Liviano',
+                'Moderado',
+                'Pesado',
+                'Muy pesado'];
+  String? _textico = 'Liviano';
 
   void callSelectorCab() async {
     var fechaSeleccionadaCab = await getFechaCabWidget();
@@ -115,7 +120,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                                     ),
                                   ],
                                 )
-                              : Container(
+                               :Container(
                                   padding: EdgeInsets.all(10),
                                   child: CircleAvatar(
                                     backgroundImage: MemoryImage(webImage),
@@ -163,8 +168,8 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                           child: TextFormField(
                             controller: direccionctrl,
                             decoration: TemaPrincipal().textInputDecoration(
-                                'Cuadrilla/Box del caballo',
-                                'Ingrese la ubicación del caballo'),
+                                'Peso del caballo (kg)',
+                                'Ingrese el peso del caballo en kilogramos'),
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return "Ingrese los datos solicitados";
@@ -201,7 +206,25 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                           height: 30,
                         ),
 
-                        //
+                        Container(
+                          width: 200,
+                          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                          decoration:
+                          TemaPrincipal().buttonBoxDecoration(context),
+                          child: DropdownButton<String>(
+                            value: _textico,
+                            items: _EstadoFisico
+                                .map((item) =>DropdownMenuItem<String>(
+                                value: item,
+                                child: Text(item),
+                            ))
+                            .toList(),
+                            onChanged: (item) => setState(() => _textico = item),
+                            ),
+                            ),
+                        SizedBox(
+                          height: 30,
+                        ),
                         Container(
                           decoration:
                               TemaPrincipal().buttonBoxDecoration(context),
@@ -240,5 +263,13 @@ class _RegistroCaballos extends State<RegistroCaballos> {
         ),
       ),
     );
-  }
+
+}
+  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+      value: item,
+      child: Text(
+        item,
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+         );
 }
