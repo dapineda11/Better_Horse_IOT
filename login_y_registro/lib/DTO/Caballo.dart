@@ -1,4 +1,4 @@
-class Persona {
+class Caballo {
   // Propiedades
   String Id = "";
   String Nombre = "";
@@ -9,7 +9,7 @@ class Persona {
 
   // Constructores
 
-  Persona(String Id, String Nombre, String Peso, String Actividad, String Image,
+  Caballo(String Id, String Nombre, String Peso, String Actividad, String Image,
       String Fecha) {
     this.Id = Id;
     this.Nombre = Nombre;
@@ -19,7 +19,7 @@ class Persona {
     this.Fecha = Fecha;
   }
 
-  Persona.fromJson(Map<String, dynamic> mapa) {
+  Caballo.fromJson(Map<String, dynamic> mapa) {
     this.Id = mapa['Id'];
     this.Nombre = mapa['Nombre'];
     this.Peso = mapa['Peso'];

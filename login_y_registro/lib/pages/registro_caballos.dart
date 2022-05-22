@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
-import 'package:login_y_registro/negocio/regController.dart';
+import 'package:login_y_registro/negocio/horseController.dart';
 import 'package:image_picker/image_picker.dart';
 import 'menu_y_usuario.dart';
 
@@ -50,7 +50,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
   bool checkboxValue = false;
   bool NexistImage = true;
 
-  final ctrReg = regController();
+  final cblReg = horseController();
 
   final ImagePicker _picker = ImagePicker();
   File? image;
@@ -220,6 +220,8 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                                 ),
                               ),
                               onPressed: () async {
+
+                                cblReg.getCaballos("0");
                                 if (_formKey.currentState!.validate()) {
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
