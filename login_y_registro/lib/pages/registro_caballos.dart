@@ -206,14 +206,32 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                           height: 30,
                         ),
 
-                        Container(
-                          width: 200,
-                          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-                          decoration:
-                          TemaPrincipal().buttonBoxDecoration(context),
-                          child: DropdownButton<String>(
-                            value: _textico,
-                            items: _EstadoFisico
+
+                              Container(
+                              padding:
+                              const EdgeInsets.only(left: 8.0, bottom: 4.0),
+                              alignment: Alignment.topLeft,
+                                child: Text(
+                                "Seleccione el estado físico del caballo: ",
+                                style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 18,
+                                ),
+                                textAlign: TextAlign.left,
+                                ),
+                                ),
+
+
+
+                               Container(
+                                width: 150,
+                                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+                                decoration:
+                                TemaPrincipal().buttonBoxDecoration(context),
+                                  child: DropdownButton<String>(
+                                  value: _textico,
+                                  items: _EstadoFisico
                                 .map((item) =>DropdownMenuItem<String>(
                                 value: item,
                                 child: Text(item),
@@ -225,6 +243,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                         SizedBox(
                           height: 30,
                         ),
+                        
                         Container(
                           decoration:
                               TemaPrincipal().buttonBoxDecoration(context),
@@ -262,6 +281,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
           ],
         ),
       ),
+
     );
 
 }
