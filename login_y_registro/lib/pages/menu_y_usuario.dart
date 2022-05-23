@@ -305,7 +305,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                   Navigator.push(
                     context,
 
-                    MaterialPageRoute(builder: (context) => RegistroCaballos(id:widget.id, user: widget.user)),
+                    MaterialPageRoute(builder: (context) => Lista_Caballos(id:widget.id)),
                   );
                 },
               ),

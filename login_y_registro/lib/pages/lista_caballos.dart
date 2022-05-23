@@ -1,71 +1,39 @@
 import 'package:flutter/material.dart';
 import 'caballo_pagina.dart';
+import 'package:login_y_registro/negocio/horseListController.dart';
+import '../DTO/Caballo.dart';
+
 class Lista_Caballos extends StatefulWidget {
 
-  const Lista_Caballos({Key? key}) : super(key: key);
+  final String id;
+  Lista_Caballos({required this.id});
 
   @override
   _Lista_CaballosState createState() => _Lista_CaballosState();
 }
 
-class CaballoReg{
-  final String nombre;
-  final String edad;
-  final String peso;
-  final String fecha;
-  final String actividad;
 
-
-  const CaballoReg({
-   required this.nombre,
-   required this. edad,
-    required this.peso,
-    required this.fecha,
-    required this.actividad,
-
-
-});
-}
 class _Lista_CaballosState extends State<Lista_Caballos> {
-List<CaballoReg> caballos=[
-  const CaballoReg(
-      nombre: 'Bojack',
-      edad: '22 años',
-      peso: '650kg',
-      fecha: '05/11/1999',
-      actividad: 'Liviano',
-      ),
 
-  const CaballoReg(
-      nombre: 'Secretariat',
-      edad: '22 años',
-      peso: '800kg',
-      fecha: '10/11/1999',
-      actividad: 'Moderado',
-  ),
+List<Caballo> cab=[];
 
-  const CaballoReg(
-    nombre: 'Spirit',
-    edad: '21',
-    peso: '500kg',
-    fecha: '06/01/2000',
-    actividad: 'Pesado',
-  ),
+ initState() {
+    final ctrU = horseListController();
+     ctrU.getCaballos(widget.id);
+     
+    Future.delayed(const Duration(milliseconds: 700), () {
+      setState(() {
+        cab=ctrU.obtenerCaballos(); 
+        
+      });
+    });
+  }
 
-  const CaballoReg(
-    nombre: 'Centella',
-    edad: '24',
-    peso: '720kg',
-    fecha: '07/08/1997',
-    actividad: 'Muy Pesado',
-  ),
-
-];
 
   @override
   Widget build(BuildContext context) {
     double _headerHeight = 130;
-
+    
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -87,19 +55,26 @@ List<CaballoReg> caballos=[
         ),
       ),
       body: ListView.builder(
-        itemCount: caballos.length,
+        itemCount: cab.length,
         itemBuilder: (context, index){
-          final caballitoxd= caballos[index];
+          final caballitoxd= cab[index];
 
           return Card(
           child: ListTile(
-            leading: Icon(
+            leading: caballitoxd.Image == null
+                        ? Icon(
               Icons.bedroom_baby_outlined,
               size: 30,
-            ),
+            )
+                        : CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                "https://talleriot.000webhostapp.com/uploads/" +
+                                    caballitoxd.Image),
+                            radius: 80,
+                          ), 
 
-            title: Text (caballitoxd.nombre),
-            subtitle: Text (caballitoxd.edad),
+            title: Text (caballitoxd.Nombre),
+            subtitle: Text (caballitoxd.Fecha),
             trailing: const Icon(Icons.arrow_forward),
             onTap: (){
               Navigator.of(context).push(MaterialPageRoute(

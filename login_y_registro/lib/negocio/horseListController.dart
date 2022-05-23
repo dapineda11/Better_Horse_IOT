@@ -58,6 +58,10 @@ class horseListController {
   horseListController() {}
   // metodos
 
+  List<Caballo> obtenerCaballos(){
+    return cab;
+  }
+
   void getCaballos(String id) async {
     String theUrl = 'https://talleriot.000webhostapp.com/getCaballo.php';
     var data = {"Id": id};

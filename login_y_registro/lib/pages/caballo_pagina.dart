@@ -1,8 +1,9 @@
  import 'package:flutter/material.dart';
 import 'lista_caballos.dart';
+import '../DTO/Caballo.dart';
 
 class CaballoPagina extends StatelessWidget{
-  final CaballoReg caballitoxd;
+  final Caballo caballitoxd;
 
   const CaballoPagina({
     Key? key,
@@ -11,7 +12,7 @@ class CaballoPagina extends StatelessWidget{
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-    title: Text(caballitoxd.nombre,
+    title: Text(caballitoxd.Nombre,
         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
 
       elevation: 0.5,
@@ -31,26 +32,27 @@ class CaballoPagina extends StatelessWidget{
     body: Center(
       child: Column(
         children: <Widget>[
-          Icon (Icons.bedroom_baby_outlined,
-          size: 200),
+          (caballitoxd.Image == null
+                        ? Icon(
+              Icons.bedroom_baby_outlined,
+              size: 30,
+            )
+                        : CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                "https://talleriot.000webhostapp.com/uploads/" +
+                                    caballitoxd.Image),
+                            radius: 80,
+                          ) ),
           const SizedBox(height: 16),
           Text(
-            caballitoxd.nombre,
+            caballitoxd.Nombre,
             style: const TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            caballitoxd.edad,
-            style: const TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-
-          Text(
-            caballitoxd.peso,
+            caballitoxd.Fecha,
             style: const TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.bold,
@@ -58,7 +60,15 @@ class CaballoPagina extends StatelessWidget{
           ),
 
           Text(
-            caballitoxd.fecha,
+            caballitoxd.Peso,
+            style: const TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          Text(
+            caballitoxd.Actividad,
             style: const TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.bold,
