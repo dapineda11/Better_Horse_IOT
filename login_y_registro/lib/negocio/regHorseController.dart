@@ -14,15 +14,17 @@ class regHorseController {
       String actividad,
       String id,
       String imagen,
+      String imagenName,
       String fecha,
   ) async {
-    String theUrl = 'https://talleriot.000webhostapp.com/postPersona.php';
+    String theUrl = 'https://talleriot.000webhostapp.com/postCaballo.php';
 
     var data = {
       "Nombre": nombre,
       "Id": id,
       "Peso": peso,
       "Image": imagen,
+      "ImageName": imagenName,
       "Actividad": actividad,
       "Fecha": fecha
     };

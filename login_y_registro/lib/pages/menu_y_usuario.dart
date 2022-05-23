@@ -273,7 +273,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegistroCaballos()),
+                    MaterialPageRoute(builder: (context) => RegistroCaballos(id:widget.id, user: widget.user)),
                   );
                 },
               ),
@@ -299,7 +299,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegistroCaballos()),
+                    MaterialPageRoute(builder: (context) => RegistroCaballos(id:widget.id, user: widget.user)),
                   );
                 },
               ),

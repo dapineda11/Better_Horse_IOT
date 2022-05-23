@@ -1,14 +1,19 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_y_registro/common/tema_principal.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
-import 'package:login_y_registro/negocio/horseListController.dart';
+import 'package:login_y_registro/negocio/regHorseController.dart';
 import 'package:image_picker/image_picker.dart';
 import 'menu_y_usuario.dart';
 
 class RegistroCaballos extends StatefulWidget {
+  final String id;
+  final user;
+  RegistroCaballos({required this.id, this.user});
+
   @override
   State<StatefulWidget> createState() {
     return _RegistroCaballos();
@@ -22,7 +27,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                 'Moderado',
                 'Pesado',
                 'Muy pesado'];
-  String? _textico = 'Liviano';
+  String?_textico = 'Liviano';
 
   void callSelectorCab() async {
     var fechaSeleccionadaCab = await getFechaCabWidget();
@@ -44,22 +49,20 @@ class _RegistroCaballos extends State<RegistroCaballos> {
   }
 
   TextEditingController nombrectrl = new TextEditingController();
-  TextEditingController emailctrl = new TextEditingController();
-  TextEditingController direccionctrl = new TextEditingController();
-  TextEditingController contrasenactrl = new TextEditingController();
-  TextEditingController apellidoctrl = new TextEditingController();
-  TextEditingController ciudadctrl = new TextEditingController();
-  TextEditingController celularctrl = new TextEditingController();
+  TextEditingController pesoctrl = new TextEditingController();
 
   bool checkedValue = false;
   bool checkboxValue = false;
   bool NexistImage = true;
 
-  final cblReg = horseListController();
+  final cblReg = regHorseController();
 
   final ImagePicker _picker = ImagePicker();
-  File? image;
   late Uint8List webImage;
+  String nombreImagen = "";
+  String imagen = "";
+
+  String fecha = "1967-06-15";
 
   @override
   Widget build(BuildContext context) {
@@ -134,6 +137,8 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                               var f = await temp.readAsBytes();
                               setState(() {
                                 webImage = f;
+                                this.imagen = base64Encode(webImage);
+                                this.nombreImagen = temp.name;
                                 if (NexistImage) {
                                   NexistImage = !NexistImage;
                                 }
@@ -166,7 +171,7 @@ class _RegistroCaballos extends State<RegistroCaballos> {
 
                         Container(
                           child: TextFormField(
-                            controller: direccionctrl,
+                            controller: pesoctrl,
                             decoration: TemaPrincipal().textInputDecoration(
                                 'Peso del caballo (kg)',
                                 'Ingrese el peso del caballo en kilogramos'),
@@ -261,12 +266,13 @@ class _RegistroCaballos extends State<RegistroCaballos> {
                               ),
                               onPressed: () async {
 
-                                cblReg.getCaballos("0");
+                                cblReg.insertarCaballo(nombrectrl.text, pesoctrl.text, _textico.toString(), widget.id, imagen ,nombreImagen, fecha);
                                 if (_formKey.currentState!.validate()) {
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
                                           builder: (context) => MenuYUsuario(
-                                                id: '0',
+                                                id:  widget.id,
+                                                user: widget.user
                                               )),
                                       (Route<dynamic> route) => false);
                                 }
