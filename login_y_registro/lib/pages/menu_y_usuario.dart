@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:login_y_registro/pages/alimentacion.dart';
 import 'package:login_y_registro/pages/pagina_inicio.dart';
 import 'package:login_y_registro/pages/pantalla_animacion.dart';
 import 'package:login_y_registro/pages/registro_caballos.dart';
+import 'package:login_y_registro/pages/temperatura.dart';
+import 'package:login_y_registro/pages/calidad_aire.dart';
+import 'package:login_y_registro/pages/humedad.dart';
 import 'package:login_y_registro/pages/widgets/header_widget.dart';
 import 'recuperar_contrasena.dart';
 import 'quienes_somos.dart';
@@ -162,8 +166,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              PantallaAnimacion(title: "Temperatura")));
+                          builder: (context) =>Temperatura()));
                 },
               ),
               Divider(
@@ -182,7 +185,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PaginaInicio()),
+                    MaterialPageRoute(builder: (context) => Calidad_Aire()),
                   );
                 },
               ),
@@ -202,7 +205,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PaginaRegistro()),
+                    MaterialPageRoute(builder: (context) => Humedad()),
                   );
                 },
               ),
@@ -226,7 +229,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => RecuperarContrasena()),
+                        builder: (context) => Alimentacion()),
                   );
                 },
               ),
