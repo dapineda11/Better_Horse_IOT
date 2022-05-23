@@ -31,7 +31,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
   double _tamanoIconos = 24;
   double _tamanoLetra = 17;
 
-  String ubicacionImagen = "invalido";
+  String ubicacionImagen = " ";
   var nombre = null;
   var apellido = null;
   var correo = null;
@@ -43,14 +43,20 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
     ctrU.descargar(widget.id);
     ctrU.getUbicacion(widget.id);
 
-    Future.delayed(const Duration(milliseconds: 700), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
-        ubicacionImagen = ctrU.getImagen();
+        ubicacionImagen =  ctrU.getImagen();
         nombre = ctrU.getNombre();
         apellido = ctrU.getApellido();
         correo = widget.user.Correo;
         tel = ctrU.getTelefono();
         place = (ctrU.getDireccion() + " : " + ctrU.getCiudad());
+
+          if(ubicacionImagen != "invalido"){
+            ubicacionImagen = "https://talleriot.000webhostapp.com/uploads/" + ctrU.getImagen();
+          }
+
+        print(ubicacionImagen);
       });
     });
   }
@@ -327,7 +333,10 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                       color: Theme.of(context).accentColor),
                 ),
                 onTap: () {
-                  SystemNavigator.pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaginaInicio()),
+                  );
                 },
               ),
             ],
@@ -369,8 +378,8 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                           )
                         : CircleAvatar(
                             backgroundImage: NetworkImage(
-                                "https://talleriot.000webhostapp.com/uploads/" +
-                                    ubicacionImagen),
+                              ubicacionImagen
+                                ),
                             radius: 80,
                           ),
                   ),

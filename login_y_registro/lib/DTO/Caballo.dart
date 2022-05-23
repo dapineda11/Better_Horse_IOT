@@ -24,8 +24,10 @@ class Caballo {
     this.Nombre = mapa['Nombre'];
     this.Peso = mapa['Peso'];
     this.Actividad = mapa['Actividad'];
-    if (mapa['Image'] != null) {
-      this.Image = mapa['Image'];
+    if (mapa['Image'] != null)  {
+      if (mapa['Image'] != "")  {
+        this.Image = mapa['Image'];
+      }
     }
 
     if (mapa['Fecha'] != null) {

@@ -5,10 +5,10 @@ class Usuario {
   int Id = 0;
   // Constructores
 
-  Usuario(String Correo, String Contrasena, int Id) {
+  Usuario(String Correo, String Contrasena, String Id) {
     this.Correo = Correo;
     this.Contrasena = Contrasena;
-    this.Id = Id;
+    this.Id = int.parse(Id);
   }
 
   Usuario.fromJson(Map<String, dynamic> mapa) {

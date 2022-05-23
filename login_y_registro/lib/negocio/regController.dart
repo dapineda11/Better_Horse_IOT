@@ -4,7 +4,13 @@ import '../DTO/Usuario.dart';
 
 class regController {
   // Propiedades
+  var user = null;  
+
   // Get y sets
+  Usuario getUsuario(correo, contrasena, id) {
+    return Usuario(correo, contrasena, id);
+  }
+
   // Constructores
   // metodos
 
@@ -44,6 +50,8 @@ class regController {
       "Ciudad": ciudad,
       "Direccion": direccion
     };
+
+  
 
     Uri uri = Uri.parse(theUrl);
     var response = await http.post(uri, body: data);

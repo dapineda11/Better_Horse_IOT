@@ -25,7 +25,9 @@ class Persona {
     this.Apellido = mapa['Apellido'];
     this.Celular = mapa['Celular'];
     if (mapa['Image'] != null) {
+       if (mapa['Image'] != "")  {
       this.Image = mapa['Image'];
+      }
     }
 
     if (mapa['Fecha'] != null) {

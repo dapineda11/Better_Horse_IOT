@@ -132,7 +132,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                             if (temp != null) {
                               var f = await temp.readAsBytes();
                               setState(() {
-                                this.webImage = f;
+                                webImage = f;
                                 this.imagen = base64Encode(webImage);
                                 this.nombreImagen = temp.name;
                                 if (NexistImage) {
@@ -374,6 +374,8 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                     await ctrReg.verificar(emailctrl.text);
 
                                 if (res == 1) {
+
+                                  
                                   ctrReg.insertarPersona(
                                       nombrectrl.text,
                                       apellidoctrl.text,
@@ -390,7 +392,7 @@ class _PaginaRegistroState extends State<PaginaRegistro> {
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
                                           builder: (context) => MenuYUsuario(
-                                              id: cedulactrl.text)),
+                                              id: cedulactrl.text, user: ctrReg.getUsuario(emailctrl.text, contrasenactrl.text, cedulactrl.text))),
                                       (Route<dynamic> route) => false);
                                 } else {
                                   Fluttertoast.showToast(
