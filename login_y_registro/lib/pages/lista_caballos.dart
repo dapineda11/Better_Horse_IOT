@@ -66,6 +66,7 @@ List<CaballoReg> caballos=[
   Widget build(BuildContext context) {
     double _headerHeight = 130;
 
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

@@ -66,12 +66,31 @@ class _RegistroCaballos extends State<RegistroCaballos> {
 
   @override
   Widget build(BuildContext context) {
+    final Widget? trailing;
     //boton selector
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text ('Registrar nuevo caballo' ,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+        elevation: 0.5,
+        iconTheme: IconThemeData(color: Colors.white),
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).accentColor,
+                  ])),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
+
             Container(
               height: 150,
               child: HeaderWidget(150, false, Icons.person_add_alt_1_rounded),
