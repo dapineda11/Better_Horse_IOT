@@ -24,7 +24,7 @@ class logController {
     var data = {"Correo": correo};
 
     Uri uri = Uri.parse(theUrl);
-    var response = await http.post(uri, body: data);
+    var response = await http.post(uri, body: data );
     var responseBody = json.decode(response.body);
 
     if (responseBody.length != 0) {
