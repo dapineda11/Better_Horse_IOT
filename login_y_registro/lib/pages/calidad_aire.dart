@@ -38,12 +38,28 @@ static const htmlData= """
                   ])),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Html(
-          data: htmlData,
+      body: Align(
+        alignment: Alignment.topLeft,
+        child: Column(
 
+          children: <Widget>[
+            Container(
+              child:
+              Html(
+                data: htmlData,
+              ),
+
+              padding: EdgeInsets.fromLTRB(10, 20, 5, 20),
+              margin: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                border: Border.all(width: 5, color: Colors.amberAccent),
+                //borderRadius: const BorderRadius.all(const Radius.circular(8)
+              ),
+            ),
+          ],
         ),
       ),
+
     );
   }
 }

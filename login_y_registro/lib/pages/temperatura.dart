@@ -13,14 +13,17 @@ class Temperatura extends StatefulWidget {
 
 class _TemperaturaState extends State<Temperatura> {
   static const htmlData= """
-  <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1743612/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+  <iframe width="450" height="260" style="border: 8px solid #cccccc;" src="https://thingspeak.com/channels/1743612/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
 """;
+
+
   @override
   Widget build(BuildContext context) {
     double _headerHeight = 130;
 
     return Scaffold(
       backgroundColor: Colors.white,
+
       appBar: AppBar(
         title: const Text ('Temperatura en tiempo real' ,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
@@ -37,14 +40,31 @@ class _TemperaturaState extends State<Temperatura> {
                     Theme.of(context).accentColor,
                   ])),
         ),
+
       ),
-      body: Center(
-        heightFactor: 2,
-        widthFactor: 5,
-        child: Html(
-          data: htmlData,
+
+      body: Align(
+        alignment: Alignment.topLeft,
+         child: Column(
+
+          children: <Widget>[
+            Container(
+              child:
+              Html(
+                data: htmlData,
+              ),
+
+        padding: EdgeInsets.fromLTRB(10, 20, 5, 20),
+              margin: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                border: Border.all(width: 5, color: Colors.deepOrange),
+                  //borderRadius: const BorderRadius.all(const Radius.circular(8)
+               ),
+               ),
+             ],
         ),
       ),
+
     );
   }
 }
