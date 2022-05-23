@@ -35,7 +35,7 @@ class CaballoPagina extends StatelessWidget{
           (caballitoxd.Image == null
                         ? Icon(
               Icons.bedroom_baby_outlined,
-              size: 30,
+              size: 80,
             )
                         : CircleAvatar(
                             backgroundImage: NetworkImage(
