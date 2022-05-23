@@ -18,6 +18,23 @@ class _QuienesSomosState extends State<QuienesSomos> {
 
     return Scaffold(
         backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text ('Información de nuestra compañía' ,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+        elevation: 0.5,
+        iconTheme: IconThemeData(color: Colors.white),
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).accentColor,
+                  ])),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -9,6 +9,7 @@ import 'recuperar_contrasena.dart';
 import 'quienes_somos.dart';
 import 'pagina_registro.dart';
 import 'package:login_y_registro/negocio/userController.dart';
+import 'package:login_y_registro/pages/lista_caballos.dart';
 
 
 class MenuYUsuario extends StatefulWidget {
@@ -284,6 +285,7 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                 color: Theme.of(context).primaryColor,
                 height: 1,
               ),
+
               ListTile(
                 leading: Icon(
                   Icons.agriculture,
@@ -299,16 +301,10 @@ class _MenuYUsuarioState extends State<MenuYUsuario> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegistroCaballos()),
+                    MaterialPageRoute(builder: (context) => Lista_Caballos()),
                   );
                 },
               ),
-
-              Divider(
-                color: Theme.of(context).primaryColor,
-                height: 1,
-              ),
-
               Divider(
                 color: Theme.of(context).primaryColor,
                 height: 1,

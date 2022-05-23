@@ -1,8 +1,6 @@
  import 'package:flutter/material.dart';
 import 'lista_caballos.dart';
 
-
-
 class CaballoPagina extends StatelessWidget{
   final CaballoReg caballitoxd;
 
