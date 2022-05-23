@@ -12,7 +12,9 @@ class Temperatura extends StatefulWidget {
 
 
 class _TemperaturaState extends State<Temperatura> {
-
+  static const htmlData= """
+  <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1743612/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+""";
   @override
   Widget build(BuildContext context) {
     double _headerHeight = 130;
@@ -36,7 +38,13 @@ class _TemperaturaState extends State<Temperatura> {
                   ])),
         ),
       ),
-
+      body: Center(
+        heightFactor: 2,
+        widthFactor: 5,
+        child: Html(
+          data: htmlData,
+        ),
+      ),
     );
   }
 }

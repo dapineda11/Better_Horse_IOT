@@ -12,7 +12,9 @@ class Alimentacion extends StatefulWidget {
 
 
 class _AlimentacionState extends State<Alimentacion> {
-
+  static const htmlData="""
+  <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1743612/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+  """;
   @override
   Widget build(BuildContext context) {
     double _headerHeight = 130;
@@ -36,7 +38,11 @@ class _AlimentacionState extends State<Alimentacion> {
                   ])),
         ),
       ),
-
+      body: SingleChildScrollView(
+        child: Html(
+          data: htmlData,
+        ),
+      ),
     );
   }
 }
